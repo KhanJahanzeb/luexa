@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+    <title>Lunexa Studio</title>
+    <meta name="description" content="Professional logo, website, branding and mobile app design services." />
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/assets/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!--
+      Legacy jQuery + Slick carousel + bigSlide + Fancybox bundle (formerly
+      assets/js/layout.js) and the intl-tel-input helper — pure library
+      definitions with no DOM queries of their own, safe to load up front.
+      assets/js/custom.js is NOT loaded here: most of it is bare top-level code
+      (not wrapped in $(document).ready), written assuming it's the last thing
+      on a fully-parsed static page. Loaded this early it would query an empty
+      #root and bind to nothing. It's injected dynamically after React mounts
+      instead — see src/main.jsx. See README.md §4b for the full story.
+    -->
+    <script src="/assets/js/layout.js"></script>
+    <script src="/assets/js/intlTelInput.js"></script>
+
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
