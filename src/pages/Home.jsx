@@ -1,3 +1,7 @@
+import { IconCamera, IconCart, IconChat, IconCheck, IconChevronUp, IconClock, IconClose, IconDashboard, IconGauge, IconHeadset, IconInfo, IconLayers, IconPhone, IconSearch, IconSparkle, IconStorefront, IconTrendUp, IconUser, IconWeb } from "../components/icons/Icon.jsx";
+import TrustStrip from "../components/TrustStrip.jsx";
+import Avatar from "../components/Avatar.jsx";
+import HeroArt from "../components/HeroArt.jsx";
 
 import Layout from "../components/Layout.jsx";
 
@@ -7,9 +11,7 @@ export default function Home() {
       <div className={"ban-sec-slider"}>
         <div className={"banner-sec"}>
           <div className={"ban-slide"}>
-            <div className={"banner-pic"}>
-              <img src={"/assets/images/banners/home4.jpg"} alt={""} />
-            </div>
+            <div className={"banner-pic lx-hero-bg"}></div>
             <div className={"ban-txt-box"}>
               <div className={"container"}>
                 <div className={"row"}>
@@ -39,6 +41,9 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
+                  <div className={"col-lg-6 lx-hero-art-col"}>
+                    <HeroArt theme={"home"} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -46,9 +51,7 @@ export default function Home() {
         </div>
         <div className={"banner-sec"}>
           <div className={"ban-slide"}>
-            <div className={"banner-pic"}>
-              <img src={"/assets/images/banners/home5.jpg"} alt={""} />
-            </div>
+            <div className={"banner-pic lx-hero-bg"}></div>
             <div className={"ban-txt-box"}>
               <div className={"container"}>
                 <div className={"row"}>
@@ -61,9 +64,6 @@ export default function Home() {
                         <h1>
                           Data Driven Strategies, Measurable Results
                         </h1>
-                        <div className={"started"}>
-                          <img src={"/assets/images/banners/price.png"} alt={""} />
-                        </div>
                         <ul>
                           <li>
                             8+ years of experience in digital marketing services
@@ -81,6 +81,9 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
+                  <div className={"col-lg-6 lx-hero-art-col"}>
+                    <HeroArt theme={"digital"} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -88,9 +91,7 @@ export default function Home() {
         </div>
         <div className={"banner-sec"}>
           <div className={"ban-slide"}>
-            <div className={"banner-pic"}>
-              <img src={"/assets/images/banners/home6.jpg"} alt={""} />
-            </div>
+            <div className={"banner-pic lx-hero-bg"}></div>
             <div className={"ban-txt-box"}>
               <div className={"container"}>
                 <div className={"row"}>
@@ -103,9 +104,6 @@ export default function Home() {
                         <h1>
                           Your Success is Our Mission
                         </h1>
-                        <div className={"started"}>
-                          <img src={"/assets/images/banners/price.png"} alt={""} />
-                        </div>
                         <ul>
                           <li>
                             In the fast-paced digital world, choosing the right digital marketing partner makes all the difference
@@ -119,6 +117,9 @@ export default function Home() {
                         </a>
                       </div>
                     </div>
+                  </div>
+                  <div className={"col-lg-6 lx-hero-art-col"}>
+                    <HeroArt theme={"connect"} />
                   </div>
                 </div>
               </div>
@@ -137,45 +138,8 @@ export default function Home() {
                 </span>
               </h2>
             </div>
-            <div className={"ban-btm-logos"}>
-              <ul>
-                <li>
-                  <img src={"/assets/images/bclient-logos/01.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/02.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/03.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/04.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/05.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/06.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/07.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/08.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/09.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/10.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/11.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/12.png"} height={"50"} alt={""} />
-                </li>
-              </ul>
+            <div className={"col-md-12"}>
+              <TrustStrip />
             </div>
           </div>
         </div>
@@ -185,7 +149,7 @@ export default function Home() {
           <div className={"row"}>
             <div className={"col-lg-5 col-md-5 animatedParent"} data-sequence={"150"}>
               <h2 className={"lg-hd animated bounceInLeft"} data-id={"1"}>
-                Data Driven Strategies,
+                Data Driven Strategies,{" "}
                 <strong>
                   Measurable Results
                 </strong>
@@ -202,7 +166,7 @@ export default function Home() {
             <div className={"col-lg-6 col-md-6 text-center"}>
               <div className={"concept-sldr-img"}>
                 <div>
-                  <img src={"/assets/images/logo-pic-01.png"} width={"500"} height={"385"} alt={""} />
+                  <HeroArt theme={"home"} />
                 </div>
               </div>
             </div>
@@ -223,7 +187,7 @@ export default function Home() {
                 <li className={"type-li1"}>
                   <a href={"/website"}>
                     <div className={"type-box"}>
-                      <i className={"sprite-icn sprite-icn-iconic"}></i>
+                      <i className={"lx-icon-badge"}><IconWeb size={36} /></i>
                       <h5>
                         Lunexa Digital
                       </h5>
@@ -236,7 +200,7 @@ export default function Home() {
                 <li className={"type-li2"}>
                   <a href={"/branding"}>
                     <div className={"type-box"}>
-                      <i className={"sprite-icn sprite-icn-typographic"}></i>
+                      <i className={"lx-icon-badge"}><IconStorefront size={36} /></i>
                       <h5>
                         Lunexa LaunchPad
                       </h5>
@@ -249,7 +213,7 @@ export default function Home() {
                 <li className={"type-li3"}>
                   <a href={"/ecommerce"}>
                     <div className={"type-box"}>
-                      <i className={"sprite-icn sprite-icn-illustrative"}></i>
+                      <i className={"lx-icon-badge"}><IconHeadset size={36} /></i>
                       <h5>
                         Lunexa Connect
                       </h5>
@@ -262,7 +226,7 @@ export default function Home() {
                 <li className={"type-li4"}>
                   <a href={"/mobile"}>
                     <div className={"type-box"}>
-                      <i className={"sprite-icn sprite-icn-animated"}></i>
+                      <i className={"lx-icon-badge"}><IconCamera size={36} /></i>
                       <h5>
                         Lunexa Media
                       </h5>
@@ -277,7 +241,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className={"get-started-cta animatedParent"} data-img={"url(assets/images/cta-bg-01.jpg)"} data-sequence={"200"}>
+      <section className={"get-started-cta animatedParent lx-cta-bg"} data-img={"url(assets/images/cta-bg-01.jpg)"} data-sequence={"200"}>
         <div className={"container"}>
           <div className={"row"}>
             <div className={"col-md-12"}>
@@ -292,13 +256,13 @@ export default function Home() {
               <ul>
                 <li className={"animated bounceInUp"} data-id={"3"}>
                   <a href={"/contact"} className={"text-center blue-cta-btn"}>
-                    <i className={"fa fa-check-circle"} aria-hidden={"true"}></i>
+                    <i className={"lx-btn-icon"}><IconCheck size={18} /></i>
                     Let's Talk Strategy
                   </a>
                 </li>
                 <li className={"animated bounceInUp"} data-id={"4"}>
                   <a href={"javascript:;"} title={"Live Chat"} target={"_self"} onClick={() => { if (typeof window.setButtonURL === "function") window.setButtonURL(); }} className={"text-center white-cta-btn"}>
-                    <i className={"fa fa-comments"} aria-hidden={"true"}></i>
+                    <i className={"lx-btn-icon"}><IconChat size={18} /></i>
                     Live Chat
                   </a>
                 </li>
@@ -307,7 +271,7 @@ export default function Home() {
                 <span className={"cta-call"}>
                   or call us at
                   <a href={"tel:+ 210 360 9849"}>
-                    <i className={"fa fa-phone"} aria-hidden={"true"}></i>
+                    <i className={"lx-btn-icon"}><IconPhone size={16} /></i>
                     + 210 360 9849
                   </a>
                 </span>
@@ -351,7 +315,7 @@ export default function Home() {
                 <div className={"logodesign-package"}>
                   <ul className={"pack-list animatedParent"} data-sequence={"100"}>
                     <li className={"less-offer-pack"}>
-                      <i className={"pkg-icn pkg-icn1"}></i>
+                      <i className={"pkg-icn pkg-icn1"}><IconLayers size={26} /></i>
                       <h3 className={"pack-title"}>
                         Lunexa One Team Plan
                         <span>
@@ -378,7 +342,7 @@ export default function Home() {
                         <li>
                           Exclusive Benefits
                           <div className={"icn-tooltip"}>
-                            <i className={"fa fa-info-circle"} aria-hidden={"true"}></i>
+                            <i className={"lx-btn-icon"}><IconInfo size={14} /></i>
                             <div className={"tooltip-innr"}>
                               (Dedicated Account Manager, Priority Support)
                             </div>
@@ -411,13 +375,13 @@ export default function Home() {
                       <ul className={"pkg-cta"}>
                         <li>
                           <a href={"javascript:;"} title={"Live Chat"} target={"_self"} onClick={() => { if (typeof window.setButtonURL === "function") window.setButtonURL(); }}>
-                            <i className={"fa fa-comments"} aria-hidden={"true"}></i>
+                            <i className={"lx-btn-icon"}><IconChat size={18} /></i>
                             Live Chat
                           </a>
                         </li>
                         <li>
                           <a href={"tel:+ 210 360 9849"}>
-                            <i className={"fa fa-phone"} aria-hidden={"true"}></i>
+                            <i className={"lx-btn-icon"}><IconPhone size={16} /></i>
                             + 210 360 9849
                           </a>
                         </li>
@@ -439,7 +403,7 @@ export default function Home() {
                   </h2>
                   <ul className={"features-ul"}>
                     <li className={"animated bounceInLeft"} data-id={"1"}>
-                      <i className={"feature-icn feature-icn-1"}></i>
+                      <i className={"feature-icn feature-icn-1"} style={{display:"flex",alignItems:"center",justifyContent:"center",width:48,height:48,borderRadius:"50%",background:"#f2edff",margin:"0 auto"}}><IconTrendUp size={22} /></i>
                       <h5>
                         Data-Driven
                         <br />
@@ -452,7 +416,7 @@ export default function Home() {
                       </div>
                     </li>
                     <li className={"animated bounceInLeft"} data-id={"2"}>
-                      <i className={"feature-icn feature-icn-2"}></i>
+                      <i className={"feature-icn feature-icn-2"} style={{display:"flex",alignItems:"center",justifyContent:"center",width:48,height:48,borderRadius:"50%",background:"#f2edff",margin:"0 auto"}}><IconSparkle size={22} /></i>
                       <h5>
                         Creative &amp; Innovative
                       </h5>
@@ -463,7 +427,7 @@ export default function Home() {
                       </div>
                     </li>
                     <li className={"animated bounceInLeft"} data-id={"3"}>
-                      <i className={"feature-icn feature-icn-3"}></i>
+                      <i className={"feature-icn feature-icn-3"} style={{display:"flex",alignItems:"center",justifyContent:"center",width:48,height:48,borderRadius:"50%",background:"#f2edff",margin:"0 auto"}}><IconGauge size={22} /></i>
                       <h5>
                         Transparent
                         <br />
@@ -476,7 +440,7 @@ export default function Home() {
                       </div>
                     </li>
                     <li className={"animated bounceInLeft"} data-id={"4"}>
-                      <i className={"feature-icn feature-icn-4"}></i>
+                      <i className={"feature-icn feature-icn-4"} style={{display:"flex",alignItems:"center",justifyContent:"center",width:48,height:48,borderRadius:"50%",background:"#f2edff",margin:"0 auto"}}><IconUser size={22} /></i>
                       <h5>
                         Dedicated
                         <br />
@@ -489,7 +453,7 @@ export default function Home() {
                       </div>
                     </li>
                     <li className={"animated bounceInLeft"} data-id={"5"}>
-                      <i className={"feature-icn feature-icn-5"}></i>
+                      <i className={"feature-icn feature-icn-5"} style={{display:"flex",alignItems:"center",justifyContent:"center",width:48,height:48,borderRadius:"50%",background:"#f2edff",margin:"0 auto"}}><IconClock size={22} /></i>
                       <h5>
                         8+ Years of
                         <br />
@@ -589,37 +553,37 @@ export default function Home() {
                 <h4>
                   Discovery &amp; Consult
                 </h4>
-                <i className={"process-icn prcss-icn1"}></i>
+                <i className={"process-icn prcss-icn1"}><IconSearch size={26} /></i>
               </li>
               <li id={"process2"} className={"prc-all prc-2"}>
                 <h4>
                   Strategy &amp; Planning
                 </h4>
-                <i className={"process-icn prcss-icn2"}></i>
+                <i className={"process-icn prcss-icn2"}><IconLayers size={26} /></i>
               </li>
               <li id={"process3"} className={"prc-all prc-3"}>
                 <h4>
                   Execution &amp; Optimize
                 </h4>
-                <i className={"process-icn prcss-icn3"}></i>
+                <i className={"process-icn prcss-icn3"}><IconGauge size={26} /></i>
               </li>
               <li id={"process4"} className={"prc-all prc-4"}>
                 <h4>
                   Results &amp; Growth
                 </h4>
-                <i className={"process-icn prcss-icn4"}></i>
+                <i className={"process-icn prcss-icn4"}><IconTrendUp size={26} /></i>
               </li>
               <li id={"process5"} className={"prc-all prc-5"}>
                 <h4>
                   Launch &amp; Scale
                 </h4>
-                <i className={"process-icn prcss-icn5"}></i>
+                <i className={"process-icn prcss-icn5"}><IconWeb size={26} /></i>
               </li>
               <li id={"process6"} className={"prc-all prc-6"}>
                 <h4>
                   Ongoing Support
                 </h4>
-                <i className={"process-icn prcss-icn6"}></i>
+                <i className={"process-icn prcss-icn6"}><IconHeadset size={26} /></i>
               </li>
             </ul>
             <div className={"process-content"}>
@@ -786,7 +750,7 @@ export default function Home() {
                     Lunexa completely transformed our online presence! Their digital marketing strategies helped us double our revenue in just six months.
                   </div>
                   <div className={"testi-author"}>
-                    <img src={"/assets/images/logo-pic-01.png"} alt={""} />
+                    <Avatar name={"Emma Richard"} size={56} />
                     <p>
                       Emma Richard
                       <span>
@@ -807,7 +771,7 @@ export default function Home() {
                     We've worked with many agencies before, but Lunexa stands out. Their data-driven approach and creative solutions gave us an edge over competitors.
                   </div>
                   <div className={"testi-author"}>
-                    <img src={"/assets/images/logo-pic-01.png"} alt={""} />
+                    <Avatar name={"David Mont"} size={56} />
                     <p>
                       David Mont
                       <span>
@@ -828,7 +792,7 @@ export default function Home() {
                     From SEO to paid ads, Lunexa nailed every aspect of our campaign. Our website traffic skyrocketed, and lead generation has never been better!
                   </div>
                   <div className={"testi-author"}>
-                    <img src={"/assets/images/logo-pic-01.png"} alt={""} />
+                    <Avatar name={"Sophia Lewis"} size={56} />
                     <p>
                       Sophia Lewis
                       <span>
@@ -849,7 +813,7 @@ export default function Home() {
                     Local Business Digital Transformation: 5&times; ROI on social media campaigns &amp; 80% increase in engagement.
                   </div>
                   <div className={"testi-author"}>
-                    <img src={"/assets/images/logo-pic-01.png"} alt={""} />
+                    <i className={"lx-icon-badge"} style={{width:56,height:56,borderRadius:"50%",background:"#f2edff",display:"inline-flex"}}><IconStorefront size={26} /></i>
                     <p>
                       Case Study
                       <span>
@@ -870,7 +834,7 @@ export default function Home() {
                     SaaS Lead Generation Success: 150% increase in qualified leads &amp; 70% lower customer acquisition cost.
                   </div>
                   <div className={"testi-author"}>
-                    <img src={"/assets/images/logo-pic-01.png"} alt={""} />
+                    <i className={"lx-icon-badge"} style={{width:56,height:56,borderRadius:"50%",background:"#f2edff",display:"inline-flex"}}><IconDashboard size={26} /></i>
                     <p>
                       Case Study
                       <span>
@@ -891,7 +855,7 @@ export default function Home() {
                     E-Commerce Growth Boost: 3&times; increase in organic traffic &amp; 2&times; revenue growth in 6 months.
                   </div>
                   <div className={"testi-author"}>
-                    <img src={"/assets/images/logo-pic-01.png"} alt={""} />
+                    <i className={"lx-icon-badge"} style={{width:56,height:56,borderRadius:"50%",background:"#f2edff",display:"inline-flex"}}><IconCart size={26} /></i>
                     <p>
                       Case Study
                       <span>
@@ -912,7 +876,7 @@ export default function Home() {
                     Startup Brand Awareness Expansion: 200% increase in brand mentions &amp; 60% higher engagement rates.
                   </div>
                   <div className={"testi-author"}>
-                    <img src={"/assets/images/logo-pic-01.png"} alt={""} />
+                    <i className={"lx-icon-badge"} style={{width:56,height:56,borderRadius:"50%",background:"#f2edff",display:"inline-flex"}}><IconSparkle size={26} /></i>
                     <p>
                       Case Study
                       <span>
@@ -1703,20 +1667,16 @@ export default function Home() {
       </section>
       <div className={"side-bar-sm-frm rght-open"}>
         <div className={"side-head"}>
-          Get
-          <strong>
-            80%
-          </strong>
-          Discount
+          Get In Touch
           <span>
-            <i className={"fa fa-chevron-up"} aria-hidden={"true"}></i>
+            <i className={"lx-btn-icon"}><IconChevronUp size={16} /></i>
           </span>
         </div>
       </div>
       <div className={"side-bar-sm-frm lft-open"}>
         <div className={"side-head"}>
           <span>
-            <i className={"fa fa-phone"} aria-hidden={"true"}></i>
+            <i className={"lx-btn-icon"}><IconPhone size={16} /></i>
           </span>
         </div>
       </div>
@@ -3251,7 +3211,7 @@ export default function Home() {
         </div>
       </div>
       <a href={"tel:+ 210 360 9849"} className={"fixed-mob-call-icon"}>
-        <i className={"fa fa-phone"} aria-hidden={"true"}></i>
+        <i className={"lx-btn-icon"}><IconPhone size={16} /></i>
       </a>
       <div className={"popup-layout popup-layout1"} id={"popup-layout"}>
         <div className={"popup-inner"}>
@@ -3262,7 +3222,7 @@ export default function Home() {
           </div>
           <div className={"col-md-5 no-pad"}>
             <a className={"popup-close"} href={"javascript:;"}>
-              <i className={"fa fa-times"} aria-hidden={"true"}></i>
+              <i className={"lx-btn-icon"}><IconClose size={16} /></i>
             </a>
             <form id={"popupform"} action={"test.php"} method={"POST"} className={"js-recaptcha-form"}>
               <input type={"hidden"} id={"package_html"} name={"package_html"} className={"package_html"} defaultValue={""} />
@@ -4025,7 +3985,7 @@ export default function Home() {
           </div>
           <div className={"col-md-5 no-pad"}>
             <a className={"popup-close"} href={"javascript:;"}>
-              <i className={"fa fa-times"} aria-hidden={"true"}></i>
+              <i className={"lx-btn-icon"}><IconClose size={16} /></i>
             </a>
             <form id={"form5"} className={"js-recaptcha-form"} action={"test-mail.php"} methd={"post"}>
               <div className={"popup-header sm-headngtxt"}>
@@ -4794,7 +4754,7 @@ export default function Home() {
           <div>
             <form id={"form6"} className={"js-recaptcha-form"} action={"#"} methd={"post"}>
               <a className={"slidefrm-close"} href={"javascript:;"}>
-                <i className={"fa fa-times"} aria-hidden={"true"}></i>
+                <i className={"lx-btn-icon"}><IconClose size={16} /></i>
               </a>
               <div className={"slidefrm-header"}>
                 <img src={"/assets/images/sidefrm-header.png"} alt={""} />
@@ -5724,13 +5684,13 @@ export default function Home() {
                   <ul className={"slide-cta"}>
                     <li>
                       <a href={"javascript:;"} title={"Live Chat"} target={"_self"} onClick={() => { if (typeof window.setButtonURL === "function") window.setButtonURL(); }}>
-                        <i className={"fa fa-comments"} aria-hidden={"true"}></i>
+                        <i className={"lx-btn-icon"}><IconChat size={18} /></i>
                         Live Chat
                       </a>
                     </li>
                     <li>
                       <a href={"tel:+ 210 360 9849"}>
-                        <i className={"fa fa-phone"} aria-hidden={"true"}></i>
+                        <i className={"lx-btn-icon"}><IconPhone size={16} /></i>
                         + 210 360 9849
                       </a>
                     </li>
@@ -5744,7 +5704,7 @@ export default function Home() {
                 <div className={"clearfix"}></div>
                 <ul className={"features-ul"}>
                   <li>
-                    <i className={"feature-icn feature-icn-1"}></i>
+                    <i className={"feature-icn feature-icn-1"} style={{display:"flex",alignItems:"center",justifyContent:"center",width:48,height:48,borderRadius:"50%",background:"#f2edff",margin:"0 auto"}}><IconTrendUp size={22} /></i>
                     <h5>
                       Data-Driven
                       <br />
@@ -5752,7 +5712,7 @@ export default function Home() {
                     </h5>
                   </li>
                   <li>
-                    <i className={"feature-icn feature-icn-3"}></i>
+                    <i className={"feature-icn feature-icn-3"} style={{display:"flex",alignItems:"center",justifyContent:"center",width:48,height:48,borderRadius:"50%",background:"#f2edff",margin:"0 auto"}}><IconGauge size={22} /></i>
                     <h5>
                       Transparent
                       <br />
@@ -5760,7 +5720,7 @@ export default function Home() {
                     </h5>
                   </li>
                   <li>
-                    <i className={"feature-icn feature-icn-4"}></i>
+                    <i className={"feature-icn feature-icn-4"} style={{display:"flex",alignItems:"center",justifyContent:"center",width:48,height:48,borderRadius:"50%",background:"#f2edff",margin:"0 auto"}}><IconUser size={22} /></i>
                     <h5>
                       Dedicated
                       <br />
@@ -5768,7 +5728,7 @@ export default function Home() {
                     </h5>
                   </li>
                   <li>
-                    <i className={"feature-icn feature-icn-5"}></i>
+                    <i className={"feature-icn feature-icn-5"} style={{display:"flex",alignItems:"center",justifyContent:"center",width:48,height:48,borderRadius:"50%",background:"#f2edff",margin:"0 auto"}}><IconClock size={22} /></i>
                     <h5>
                       8+ Years
                       <br />
@@ -5803,10 +5763,10 @@ export default function Home() {
         </div>
       </div>
       <a href={"tel:+ 210 360 9849"} className={"mob-call-icon"}>
-        <i className={"fa fa-phone"} aria-hidden={"true"}></i>
+        <i className={"lx-btn-icon"}><IconPhone size={16} /></i>
       </a>
       <a href={"javascript:"} id={"return-to-top"}>
-        <i className={"fa fa-chevron-up"} aria-hidden={"true"}></i>
+        <i className={"lx-btn-icon"}><IconChevronUp size={16} /></i>
       </a>
       <style>
         {"\n        .checkbox-wrap {\n            display: flex;\n            align-items: flex-start;\n            gap: 10px;\n            text-align: left;\n            margin-bottom: 15px;\n        }\n\n        .checkbox-wrap label {\n            line-height: 1.3;\n            color: white;\n        }\n\n        .checkbox-wrap input {\n            margin-top: 4px;\n            width: auto !important;\n        }\n    "}

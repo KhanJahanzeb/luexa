@@ -1,3 +1,4 @@
+import { IconChat, IconMenu, IconPhone, IconUser } from "./icons/Icon.jsx";
 const NAV_LINKS = [
   { to: "/", label: "Home" },
   { to: "/website", label: "Lunexa Digital" },
@@ -21,14 +22,14 @@ export default function Header({ activePath }) {
                 <img src="/assets/images/sticky-logo.svg" className="stick-img" alt="" />
               </a>
               <a href="javascript:;" className="nav-btn">
-                <i className="fa fa-bars" aria-hidden="true"></i>
+                <i className={"lx-btn-icon"}><IconMenu size={20} /></i>
               </a>
             </div>
           </div>
           <div className="col-lg-9 col-md-9">
             <div className="hdr-top-links">
               <ul className="top-info-links">
-                <li><a href="#"><i className="fa fa-user" aria-hidden="true"></i> My Account</a></li>
+                <li><a href="#"><i className={"lx-btn-icon"}><IconUser size={14} /></i> My Account</a></li>
                 <li>
                   <a
                     href="javascript:;"
@@ -38,10 +39,10 @@ export default function Header({ activePath }) {
                       if (typeof window.setButtonURL === "function") window.setButtonURL();
                     }}
                   >
-                    <i className="fa fa-comments" aria-hidden="true"></i> Live Chat
+                    <i className={"lx-btn-icon"}><IconChat size={18} /></i> Live Chat
                   </a>
                 </li>
-                <li><a href="tel:+ 210 360 9849"><i className="fa fa-phone" aria-hidden="true"></i>+ 210 360 9849</a></li>
+                <li><a href="tel:+ 210 360 9849"><i className={"lx-btn-icon"}><IconPhone size={16} /></i>+ 210 360 9849</a></li>
               </ul>
             </div>
 
@@ -58,7 +59,7 @@ export default function Header({ activePath }) {
                   </li>
                 ))}
                 <li className="sticky-call">
-                  <a href="tel:+ 210 360 9849"><i className="fa fa-phone" aria-hidden="true"></i>+ 210 360 9849</a>
+                  <a href="tel:+ 210 360 9849"><i className={"lx-btn-icon"}><IconPhone size={16} /></i>+ 210 360 9849</a>
                 </li>
               </ul>
             </div>

@@ -2362,7 +2362,7 @@ export default function Seo() {
           <h2 className={"sec-hd"}>
             Let Us Call You
             <span>
-              Our experts are here to assist you with your design queries.
+              Our experts are here to help you grow your business.
             </span>
           </h2>
           <form action={"#"} method={"POST"} id={"form2"} className={"js-recaptcha-form"}>
@@ -3117,9 +3117,9 @@ export default function Seo() {
         <div className={"popup-slide-close"}></div>
         <div className={"popup-slide-innr"}>
           <h2 className={"sec-hd"}>
-            Get Exclusive Designs
+            Get In Touch
             <span>
-              Tailored to your specification, guaranteeing your satisfaction
+              Tailored strategies, built around your business goals
             </span>
           </h2>
           <form action={"#"} method={"POST"} id={"form3"} className={"js-recaptcha-form"}>

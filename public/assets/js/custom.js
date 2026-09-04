@@ -251,8 +251,8 @@ $('.leadfrm').on('click', function() {
     $('.popup-layout5').fadeIn();
     var thisrel = $(this).attr('rel');
     $('#popupform input#popuppackage').val(thisrel);
-    $(".popup-header h3").text("Customized Logo Designs");
-    $(".popup-header p").text("Deliver Your Brand Message Effectively");
+    $(".popup-header h3").text("Get In Touch");
+    $(".popup-header p").text("Tell us about your business and we'll get back to you shortly");
 });
 
 $('.pack-sec .pack-ordernow').on('click', function() {

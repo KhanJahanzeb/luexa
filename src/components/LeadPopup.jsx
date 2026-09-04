@@ -1,7 +1,8 @@
 import { useState } from "react";
 import CountrySelect from "./CountrySelect.jsx";
+import { IconChevronDown } from "./icons/Icon.jsx";
 
-// The slide-in "Get 80% Discount" lead form that sits at the top of every page.
+// The slide-in "Get In Touch" lead form that sits at the top of every page.
 // Originally posted to process-form.php (PHPMailer) — kept intact, see README.
 export default function LeadPopup() {
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
@@ -60,7 +61,7 @@ export default function LeadPopup() {
               </form>
             </div>
             <div className="open-form-footr">
-              <h4>Get 80% Discount <i className="fa fa-arrow-circle-down" aria-hidden="true"></i></h4>
+              <h4>Get In Touch <i className={"lx-btn-icon"}><IconChevronDown size={16} /></i></h4>
             </div>
           </div>
         </div>

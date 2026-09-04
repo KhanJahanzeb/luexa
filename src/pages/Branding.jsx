@@ -1,4 +1,8 @@
 import Layout from "../components/Layout.jsx";
+import Avatar from "../components/Avatar.jsx";
+import TrustStrip from "../components/TrustStrip.jsx";
+import HeroArt from "../components/HeroArt.jsx";
+import { IconChat, IconCheck, IconClock, IconGauge, IconLayers, IconMarketing, IconPhone, IconSearch, IconSparkle, IconStorefront, IconTarget, IconTrendUp } from "../components/icons/Icon.jsx";
 
 export default function Branding() {
   return (
@@ -6,9 +10,7 @@ export default function Branding() {
       <div className={"ban-sec-slider"}>
         <div className={"banner-sec"}>
           <div className={"ban-slide"}>
-            <div className={"banner-pic"}>
-              <img src={"/assets/images/banner-3.jpg"} alt={""} />
-            </div>
+            <div className={"banner-pic lx-hero-bg"}></div>
             <div className={"ban-txt-box"}>
               <div className={"container"}>
                 <div className={"row"}>
@@ -41,6 +43,9 @@ export default function Branding() {
                       </div>
                     </div>
                   </div>
+                  <div className={"col-lg-6 lx-hero-art-col"}>
+                    <HeroArt theme={"launchpad"} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -64,46 +69,7 @@ export default function Branding() {
       <section className={"ban-btm-box"}>
         <div className={"container"}>
           <div className={"row"}>
-            <div className={"ban-btm-logos"}>
-              <ul>
-                <li>
-                  <img src={"/assets/images/bclient-logos/01.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/02.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/03.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/04.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/05.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/06.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/07.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/08.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/09.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/10.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/11.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/12.png"} height={"50"} alt={""} />
-                </li>
-              </ul>
-            </div>
+            <TrustStrip />
           </div>
         </div>
       </section>
@@ -112,7 +78,7 @@ export default function Branding() {
           <div className={"row"}>
             <div className={"col-lg-5 col-md-5 animatedParent"} data-sequence={"150"}>
               <h2 className={"lg-hd animated bounceInLeft"} data-id={"1"}>
-                Data Driven Strategies,
+                Data Driven Strategies,{" "}
                 <strong>
                   Measurable Results
                 </strong>
@@ -155,7 +121,7 @@ export default function Branding() {
             <div className={"col-lg-6 col-md-6 text-center"}>
               <div className={"concept-sldr-img"}>
                 <div>
-                  <img src={"/assets/images/branding-pic-01.png"} width={"500"} height={"385"} alt={""} />
+                  <HeroArt theme={"launchpad"} />
                 </div>
               </div>
             </div>
@@ -175,7 +141,7 @@ export default function Branding() {
               <ul className={"type-ul"}>
                 <li className={"type-li1"}>
                   <div className={"type-box"}>
-                    <i className={"sprite-icn sprite-icn-static"}></i>
+                    <i className={"lx-icon-badge"}><IconLayers size={36} /></i>
                     <h5>
                       One Umbrella Solution
                     </h5>
@@ -189,7 +155,7 @@ export default function Branding() {
                 </li>
                 <li className={"type-li2"}>
                   <div className={"type-box"}>
-                    <i className={"sprite-icn sprite-icn-dynamic"}></i>
+                    <i className={"lx-icon-badge"}><IconTarget size={36} /></i>
                     <h5>
                       Data-Backed Strategy
                     </h5>
@@ -203,7 +169,7 @@ export default function Branding() {
                 </li>
                 <li className={"type-li3"}>
                   <div className={"type-box"}>
-                    <i className={"sprite-icn sprite-icn-cms"}></i>
+                    <i className={"lx-icon-badge"}><IconClock size={36} /></i>
                     <h5>
                       Faster Time-to-Market
                     </h5>
@@ -220,7 +186,7 @@ export default function Branding() {
           </div>
         </div>
       </section>
-      <section className={"get-started-cta animatedParent"} data-img={"url(assets/images/cta-bg-01.jpg)"} data-sequence={"200"}>
+      <section className={"get-started-cta animatedParent lx-cta-bg"} data-img={"url(assets/images/cta-bg-01.jpg)"} data-sequence={"200"}>
         <div className={"container"}>
           <div className={"row"}>
             <div className={"col-md-12"}>
@@ -235,13 +201,13 @@ export default function Branding() {
               <ul>
                 <li className={"animated bounceInUp"} data-id={"3"}>
                   <a href={"/contact"} className={"text-center blue-cta-btn"}>
-                    <i className={"fa fa-check-circle"} aria-hidden={"true"}></i>
+                    <i className={"lx-btn-icon"}><IconCheck size={18} /></i>
                     Let's Talk Strategy
                   </a>
                 </li>
                 <li className={"animated bounceInUp"} data-id={"4"}>
                   <a href={"javascript:;"} title={"Live Chat"} target={"_self"} onClick={() => { if (typeof window.setButtonURL === "function") window.setButtonURL(); }} className={"text-center white-cta-btn"}>
-                    <i className={"fa fa-comments"} aria-hidden={"true"}></i>
+                    <i className={"lx-btn-icon"}><IconChat size={18} /></i>
                     Live Chat
                   </a>
                 </li>
@@ -250,7 +216,7 @@ export default function Branding() {
                 <span className={"cta-call"}>
                   or call us at
                   <a href={"tel:+ 210 360 9849"}>
-                    <i className={"fa fa-phone"} aria-hidden={"true"}></i>
+                    <i className={"lx-btn-icon"}><IconPhone size={16} /></i>
                     + 210 360 9849
                   </a>
                 </span>
@@ -287,7 +253,7 @@ export default function Branding() {
                 <li className={"type-li1"}>
                   <a href={"/branding"}>
                     <div className={"type-box"}>
-                      <i className={"sprite-icn sprite-icn-animated"}></i>
+                      <i className={"lx-icon-badge"}><IconSearch size={36} /></i>
                       <h5>
                         Product Research &amp; Sourcing
                       </h5>
@@ -300,7 +266,7 @@ export default function Branding() {
                 <li className={"type-li2"}>
                   <a href={"/branding"}>
                     <div className={"type-box"}>
-                      <i className={"sprite-icn sprite-icn-typographic"}></i>
+                      <i className={"lx-icon-badge"}><IconStorefront size={36} /></i>
                       <h5>
                         Store Setup &amp; Optimization
                       </h5>
@@ -313,7 +279,7 @@ export default function Branding() {
                 <li className={"type-li3"}>
                   <a href={"/seo"}>
                     <div className={"type-box"}>
-                      <i className={"sprite-icn sprite-icn-illustrative"}></i>
+                      <i className={"lx-icon-badge"}><IconMarketing size={36} /></i>
                       <h5>
                         E-Commerce Marketing
                       </h5>
@@ -326,7 +292,7 @@ export default function Branding() {
                 <li className={"type-li4"}>
                   <a href={"/ecommerce"}>
                     <div className={"type-box"}>
-                      <i className={"sprite-icn sprite-icn-iconic"}></i>
+                      <i className={"lx-icon-badge"}><IconSparkle size={36} /></i>
                       <h5>
                         End-to-End Brand Management
                       </h5>
@@ -440,7 +406,7 @@ export default function Branding() {
                     Lunexa completely transformed our online presence! Their digital marketing strategies helped us double our revenue in just six months.
                   </div>
                   <div className={"testi-author"}>
-                    <img src={"/assets/images/logo-pic-01.png"} alt={""} />
+                    <Avatar name={"Emma Richard"} size={56} />
                     <p>
                       Emma Richard
                       <span>
@@ -461,7 +427,7 @@ export default function Branding() {
                     We've worked with many agencies before, but Lunexa stands out. Their data-driven approach and creative solutions gave us an edge over competitors.
                   </div>
                   <div className={"testi-author"}>
-                    <img src={"/assets/images/logo-pic-01.png"} alt={""} />
+                    <Avatar name={"David Mont"} size={56} />
                     <p>
                       David Mont
                       <span>
@@ -482,7 +448,7 @@ export default function Branding() {
                     From SEO to paid ads, Lunexa nailed every aspect of our campaign. Our website traffic skyrocketed, and lead generation has never been better!
                   </div>
                   <div className={"testi-author"}>
-                    <img src={"/assets/images/logo-pic-01.png"} alt={""} />
+                    <Avatar name={"Sophia Lewis"} size={56} />
                     <p>
                       Sophia Lewis
                       <span>
@@ -518,25 +484,25 @@ export default function Branding() {
                 <h4>
                   Discovery &amp; Consult
                 </h4>
-                <i className={"process-icn prcss-icn1"}></i>
+                <i className={"process-icn prcss-icn1"}><IconSearch size={26} /></i>
               </li>
               <li id={"bprocess2"} className={"prc-all prc-2"}>
                 <h4>
                   Strategy &amp; Planning
                 </h4>
-                <i className={"process-icn prcss-icn2"}></i>
+                <i className={"process-icn prcss-icn2"}><IconLayers size={26} /></i>
               </li>
               <li id={"bprocess3"} className={"prc-all prc-3"}>
                 <h4>
                   Execution &amp; Optimize
                 </h4>
-                <i className={"process-icn prcss-icn3"}></i>
+                <i className={"process-icn prcss-icn3"}><IconGauge size={26} /></i>
               </li>
               <li id={"bprocess4"} className={"prc-all prc-4"}>
                 <h4>
                   Results &amp; Growth
                 </h4>
-                <i className={"process-icn prcss-icn4"}></i>
+                <i className={"process-icn prcss-icn4"}><IconTrendUp size={26} /></i>
               </li>
             </ul>
             <div className={"process-content"}>
@@ -659,7 +625,7 @@ export default function Branding() {
                 <div className={"logodesign-package"}>
                   <ul className={"pack-list animatedParent"} data-sequence={"100"}>
                     <li className={"normal-offer-pack"}>
-                      <i className={"pkg-icn pkg-icn1"}></i>
+                      <i className={"pkg-icn pkg-icn1"}><IconLayers size={26} /></i>
                       <h3 className={"pack-title"}>
                         Starter Growth Plan
                         <span>
@@ -697,7 +663,7 @@ export default function Branding() {
                       </a>
                     </li>
                     <li className={"always-active pkg-active popular"}>
-                      <i className={"pkg-icn pkg-icn2"}></i>
+                      <i className={"pkg-icn pkg-icn2"}><IconTrendUp size={26} /></i>
                       <h3 className={"pack-title"}>
                         Growth Plan
                         <span>
@@ -735,7 +701,7 @@ export default function Branding() {
                       </a>
                     </li>
                     <li className={"less-offer-pack"}>
-                      <i className={"pkg-icn pkg-icn3"}></i>
+                      <i className={"pkg-icn pkg-icn3"}><IconTarget size={26} /></i>
                       <h3 className={"pack-title"}>
                         Scale Plan
                         <span>

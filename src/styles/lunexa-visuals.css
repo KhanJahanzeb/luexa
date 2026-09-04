@@ -1,0 +1,335 @@
+/* Lunexa custom visual system: icon badges, avatars, trust strip, hero art.
+   Kept separate from the vendored template CSS (main.css/layout.css) so it's
+   easy to find and doesn't get overwritten by npm run resync-pages. */
+
+/* main.css hides .less-offer-pack by default (display:none !important) and
+   only shows it when an ancestor has class .offer-less-lp — a pricing-view
+   toggle (e.g. monthly/yearly) from the original template. Nothing in this
+   codebase (JSX or the legacy JS) ever adds .offer-less-lp anywhere, so this
+   toggle has no working control — it's dead, and the class just permanently
+   hides whichever pricing card happens to use it. That's the entire featured
+   "Lunexa One Team Plan" card on Home/Website/Branding/Ecommerce, and one
+   tier on every Packages.jsx pricing table. Un-hide unconditionally. */
+.less-offer-pack {
+  display: inline-block !important;
+}
+
+/* Site-wide content-visibility fix. layout.js calls $('.animatedParent').appear()
+   at parse time — a plain <script> tag loaded in index.html BEFORE React mounts
+   anything into #root (see Layout.jsx's comment on why custom.js has to be
+   injected after mount; layout.js was assumed safe to load early because it's
+   "pure library definitions with no DOM queries of its own" — this one line is
+   the exception). Elements styled bounceInUp/bounceInDown/bounceInLeft/
+   bounceInRight/fadeInUp/fadeInDown/fadeInLeft/fadeInRight/growIn start at
+   opacity:0 (see layout.css) and only reach opacity:1 when jQuery's `appear`
+   plugin fires a scroll-into-view event and custom.js's handler adds `.go` to
+   them — a trigger that, depending on timing, may never fire for content React
+   adds after that early call. Rather than depend on that firing reliably,
+   force content visible by default; the `.go` keyframe animation (translate/
+   scale/opacity transition) still plays on top if the trigger does fire, so
+   this only removes the "invisible until observed" failure mode, not the
+   animation itself. */
+.bounceInDown,
+.bounceInLeft,
+.bounceInRight,
+.bounceInUp,
+.fadeInDown,
+.fadeInLeft,
+.fadeInRight,
+.fadeInUp,
+.growIn {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Icons that swapped in for the old `sprite-icn` CSS-sprite service icons —
+   sits inside the existing 96px `.type-box i` circle badge, just centers the
+   new inline SVG in it instead of relying on a background-image sprite. */
+.lx-icon-badge {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  color: #6a3df5;
+}
+
+/* .process-icn / .pkg-icn / .feature-icn keep their original class names
+   (needed for main.css's sizing/centering rules on the wrapper), with a new
+   <svg> icon added as a child — but each of those classes also has a
+   background-image sprite on ::before (.process-icn:before, .pkg-icn:before,
+   i.pkg-icn.pkg-icnN:before, ul.features-ul li .feature-icn:before), which
+   keeps rendering behind/beside the new icon, looking like two overlapping,
+   half-cropped glyphs in the same circle. :has(svg) scopes the fix to only
+   the badges that actually got a new icon, so bare sprite icons elsewhere
+   (untouched pages still on the old template) keep working. */
+.process-icn:has(svg)::before,
+.pkg-icn:has(svg)::before,
+.feature-icn:has(svg)::before {
+  content: none !important;
+  background: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Icons that swapped in for one-off FontAwesome glyphs (buttons, header/footer,
+   popups). Kept as an <i> wrapper so existing "X i { ... }" spacing/positioning
+   rules (defined by tag name in main.css) still apply unchanged. */
+.lx-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: -3px;
+}
+
+.lx-icon {
+  flex-shrink: 0;
+}
+
+/* Initials avatar — replaces stock/placeholder headshots on testimonials and
+   team cards with a deterministic colored monogram (no fake stock photos). */
+.lx-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  user-select: none;
+}
+
+/* Trust strip — replaces the fake/repeated "client logo" image row with real
+   stat-based proof points, since no real client-logo assets exist anywhere
+   (checked the live site too). */
+.lx-trust-strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px 56px;
+  padding: 18px 0;
+}
+
+.lx-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #4a4a4a;
+}
+
+.lx-trust-item .lx-icon {
+  color: #6a3df5;
+  flex-shrink: 0;
+}
+
+.lx-trust-item strong {
+  font-size: 20px;
+  color: #1c1c1c;
+  font-weight: 800;
+  margin-right: 4px;
+}
+
+@media (max-width: 767px) {
+  .lx-trust-strip {
+    gap: 24px 32px;
+  }
+  .lx-trust-item strong {
+    font-size: 17px;
+  }
+}
+
+/* Hero art — hand-drawn SVG compositions replacing the old stock-photo hero
+   images (a travel-site mockup, a leftover logo-design poster wall, a fitness
+   app UI, etc. — none of them related to Lunexa's actual services).
+
+   .banner-pic (main.css) is a fixed-height, full-width, overflow:hidden box
+   that used to hold a full-bleed <img>; lx-hero-bg replaces that image with a
+   dark brand gradient so the existing white h1/h4 text stays legible.
+
+   The art itself is NOT positioned against that full-bleed box (a first pass
+   did that with flex/absolute math and it drifted under the text — the
+   full-bleed banner and the text's `.container` use two different coordinate
+   systems, one edge-to-edge, one centered with Bootstrap gutters, so "put art
+   at the right" and "put text at the left" didn't agree on where the middle
+   was). Instead lx-hero-art-col is a real sibling grid column next to the
+   text's col-lg-6, inside the same .container > .row — guaranteed to share
+   its coordinate system, so it can never overlap the text. */
+.lx-hero-bg {
+  background: linear-gradient(120deg, #150c2e 0%, #241454 42%, #3a1f8a 100%);
+}
+
+/* main.css has a *separate*, mobile-only background swap that only showed up
+   under real device-width testing (an iframe-viewport check — window resize
+   doesn't affect this environment's viewport): at <=823px it force-hides
+   .banner-pic (display:none) and puts a hardcoded stock "team meeting" photo
+   (mmobile-banner.jpg) on .banner-sec with !important — on every hero on the
+   site, silently undoing the gradient fix below 823px. Both overrides need
+   !important/higher specificity to win against that rule. */
+@media (max-width: 823px) {
+  .banner-pic.lx-hero-bg {
+    display: block !important;
+  }
+  .banner-sec:has(.lx-hero-bg) {
+    background: linear-gradient(120deg, #150c2e 0%, #241454 42%, #3a1f8a 100%) !important;
+  }
+}
+
+.lx-hero-art-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2; /* .banner-pic (main.css) sets z-index:1 on itself; without this
+                 the art painted underneath it even though DOM order put the
+                 art "on top" — z-index ignores DOM order between siblings
+                 that both set it. */
+}
+
+@media (max-width: 991px) {
+  .lx-hero-art-col {
+    display: none;
+  }
+}
+
+.lx-hero-art {
+  width: 100%;
+  height: auto;
+  max-width: 420px;
+  display: block;
+  margin: 0 auto;
+}
+
+@media (max-width: 991px) {
+  .lx-hero-art {
+    max-width: 420px;
+  }
+}
+
+/* .get-started-cta (main.css) hardcodes a stock "people in an office" photo
+   as its background (background: url(../images/cta-bg-01.jpg)) — busy, low
+   contrast, and unrelated to Lunexa. This class, added alongside
+   get-started-cta, wins on specificity/source-order and swaps in the same
+   dark brand gradient used for hero banners, fixing the legibility problem
+   and keeping one consistent look. */
+.lx-cta-bg {
+  background: linear-gradient(120deg, #1c1140 0%, #2c1866 55%, #4a1f9e 100%) !important;
+}
+
+/* .get-started-cta h3 span and .cta-call (main.css) are hardcoded #333 dark
+   grey — fine on the original's light background, unreadable on this dark
+   gradient. Scoped to .lx-cta-bg so it doesn't touch any other use of these
+   classes elsewhere on the site. */
+.lx-cta-bg .get-started-cta h3 span,
+.get-started-cta.lx-cta-bg h3 span {
+  color: #e4dcff !important;
+}
+
+.lx-cta-bg .cta-call,
+.lx-cta-bg .cta-call a,
+.get-started-cta.lx-cta-bg .cta-call,
+.get-started-cta.lx-cta-bg .cta-call a {
+  color: #e4dcff !important;
+}
+
+/* .sec-hd (main.css) is a fixed 36px / line-height:1.1em at every width —
+   fine for short headings, but long ones like "Your Marketing Department
+   Without the Cost of Building One" wrap to 3-4 lines on mobile and the
+   tight 1.1 line-height makes the wrapped lines collide. No mobile override
+   exists for .sec-hd at all, so add one: more line-height plus a slightly
+   smaller font-size so longer headings wrap more comfortably in a narrow
+   column. Unscoped (applies to every .sec-hd) since this is a general
+   readability fix, not specific to one heading's wording. */
+@media (max-width: 767px) {
+  .sec-hd {
+    font-size: 28px;
+    line-height: 1.35em;
+  }
+}
+
+/* .form-topmain (LeadPopup, main.css) is position:absolute; top:83px;
+   width:100%, containing a Bootstrap row with an empty .col-md-8 spacer and
+   a .col-md-4 holding the "GET IN TOUCH" tab + its slide-down form — that
+   layout only works because col-md-* docks into a narrow right-hand column
+   at >=768px. Below that, Bootstrap collapses both columns to full width and
+   stacks them, so the tab (no width constraint of its own) stretches across
+   the entire viewport and lands directly over the hero H1. No mobile
+   override existed for this at all. Keep .col-md-4 at its natural
+   (now full-width) column so the popup form, when opened, still has room for
+   usable input fields — just stop the closed *tab* itself from stretching,
+   floating it to the right so it stays a compact pill like on desktop. */
+@media (max-width: 767px) {
+  .open-form-footr {
+    float: right;
+    border-radius: 18px;
+    padding: 10px 16px;
+  }
+  .open-form-footr h4 {
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  .open-form-slide {
+    clear: both;
+  }
+}
+
+/* main.css hides .ban-btm-box entirely below 823px (display:none) — in the
+   original template this section held only a decorative client-logo strip,
+   reasonable to drop on a small screen. It now holds TrustStrip, real stat
+   content (8+ Years, 2.7k+ Reviews, etc.), not decoration, so it should stay
+   visible on mobile too. */
+@media (max-width: 823px) {
+  .ban-btm-box {
+    display: block !important;
+  }
+}
+
+/* .pack-title span (main.css) has no display:block — every pricing card's
+   subtitle/badge ("Best Seller", "For new sellers ready to launch", etc.) is
+   an inline <span> with a <br/> as its first child. The <br/> alone doesn't
+   reliably keep it off the title's line at every width, so the badge runs
+   directly into the plan name ("Lunexa One Team PlanBest Seller"). Force it
+   block-level so it always starts its own line, everywhere .pack-title is
+   used — not just on mobile. */
+.pack-title span {
+  display: block;
+}
+
+/* ul.features-ul gets Slick-carousel-converted below 824px (custom.js), and
+   inside that converted markup the <br/> between the two words of each trust
+   badge's <h5> (e.g. "Transparent<br/>Reporting") stops rendering as a line
+   break — the two words run together with no line break or space at all
+   ("TransparentReporting"). Force it, rather than relying on the <br/>
+   surviving Slick's DOM handling. */
+ul.features-ul li h5 br {
+  display: block !important;
+}
+
+/* main.css's mobile rule turns ul.process-ul (the 4-step "Discovery &
+   Consult / Strategy & Planning / ..." row) into a horizontally-scrollable
+   strip: white-space:nowrap + overflow:scroll, so the 4 steps share one
+   unwrapped line instead of stacking. That's a reasonable mobile pattern on
+   its own, but .process-ul li has no spacing, so the step labels butt
+   directly against each other with zero gap ("Discovery &
+   ConsultStrategy & Planning..."). Add breathing room between them and stop
+   each label from shrink-wrapping to illegibly narrow. */
+@media (max-width: 823px) {
+  .process-ul li {
+    width: auto !important;
+    padding: 0 14px;
+    margin-right: 6px;
+  }
+  .process-ul li h4 {
+    padding: 0 2px;
+  }
+}
+
+/* main.css's mobile rule sets .special-packg-sec h2 span (the "Your
+   Marketing Department Without the Cost of Building One" subtitle in the
+   mega-package promo) to line-height:10px against a 20px font-size — when
+   that text wraps to 2 lines on a narrow screen, the lines are packed tighter
+   than the text itself is tall, so they visually overlap. */
+@media (max-width: 823px) {
+  .special-packg-sec h2 span {
+    line-height: 1.3em;
+    margin-top: 4px;
+  }
+}

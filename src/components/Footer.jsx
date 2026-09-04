@@ -1,3 +1,4 @@
+import { IconMail, IconMapPin, IconPhone } from "./icons/Icon.jsx";
 export default function Footer() {
   return (
     <footer>
@@ -7,14 +8,14 @@ export default function Footer() {
             <div className="col-lg-4">
               <div className="ftr-logo text-left">
                 <a href="/">
-                  <img src="/assets/images/LogifyeLogoWhite.png" alt="" />
+                  <img src="/assets/images/sticky-logo.svg" alt="Lunexa Studios" />
                 </a>
               </div>
               <p className="ftr-tagline">Driving Digital Growth with Innovation &amp; Strategy</p>
               <ul className="ftr-contact-info remove-border text-left">
-                <li><i className="fa fa-phone" aria-hidden="true"></i> Toll Free:+ 210 360 9849</li>
-                <li><i className="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:Lunexastudios1@gmail.com">Lunexastudios1@gmail.com</a></li>
-                <li><i className="fa fa-map-marker" aria-hidden="true"></i>Texas, USA</li>
+                <li><i className={"lx-btn-icon"}><IconPhone size={16} /></i> Toll Free:+ 210 360 9849</li>
+                <li><i className={"lx-btn-icon"}><IconMail size={14} /></i> <a href="mailto:Lunexastudios1@gmail.com">Lunexastudios1@gmail.com</a></li>
+                <li><i className={"lx-btn-icon"}><IconMapPin size={14} /></i>Texas, USA</li>
                 <li className="nopad-left">
                   <ul className="ftr-social-icon"></ul>
                 </li>

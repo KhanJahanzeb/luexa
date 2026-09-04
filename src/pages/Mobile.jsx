@@ -1,4 +1,7 @@
 import { useState } from "react";
+import TrustStrip from "../components/TrustStrip.jsx";
+import HeroArt from "../components/HeroArt.jsx";
+import { IconChat, IconCheck, IconGauge, IconLayers, IconPhone, IconSearch, IconSparkle, IconTarget, IconTrendUp, IconUser, IconUsers, IconZoomIn } from "../components/icons/Icon.jsx";
 import Layout from "../components/Layout.jsx";
 
 const MEDIA_PORTFOLIO_TABS = [
@@ -38,9 +41,7 @@ export default function Mobile() {
       <div className={"ban-sec-slider"}>
         <div className={"banner-sec"}>
           <div className={"ban-slide"}>
-            <div className={"banner-pic"}>
-              <img src={"/assets/images/Mobile Appsbanoverlay-01.png"} alt={""} />
-            </div>
+            <div className={"banner-pic lx-hero-bg"}></div>
             <div className={"ban-txt-box"}>
               <div className={"container"}>
                 <div className={"row"}>
@@ -73,6 +74,9 @@ export default function Mobile() {
                       </div>
                     </div>
                   </div>
+                  <div className={"col-lg-6 lx-hero-art-col"}>
+                    <HeroArt theme={"media"} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -82,46 +86,7 @@ export default function Mobile() {
       <section className={"ban-btm-box"}>
         <div className={"container"}>
           <div className={"row"}>
-            <div className={"ban-btm-logos"}>
-              <ul>
-                <li>
-                  <img src={"/assets/images/bclient-logos/01.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/02.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/03.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/04.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/05.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/06.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/07.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/08.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/09.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/10.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/11.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/12.png"} height={"50"} alt={""} />
-                </li>
-              </ul>
-            </div>
+            <TrustStrip />
           </div>
         </div>
       </section>
@@ -138,7 +103,7 @@ export default function Mobile() {
               <ul className={"type-ul"}>
                 <li className={"type-li1"}>
                   <div className={"type-box"}>
-                    <i className={"sprite-icn sprite-icn-static"}></i>
+                    <i className={"lx-icon-badge"}><IconUser size={36} /></i>
                     <h5>
                       Portraits
                     </h5>
@@ -149,7 +114,7 @@ export default function Mobile() {
                 </li>
                 <li className={"type-li2"}>
                   <div className={"type-box"}>
-                    <i className={"sprite-icn sprite-icn-dynamic"}></i>
+                    <i className={"lx-icon-badge"}><IconUsers size={36} /></i>
                     <h5>
                       Weddings
                     </h5>
@@ -160,7 +125,7 @@ export default function Mobile() {
                 </li>
                 <li className={"type-li3"}>
                   <div className={"type-box"}>
-                    <i className={"sprite-icn sprite-icn-cms"}></i>
+                    <i className={"lx-icon-badge"}><IconSparkle size={36} /></i>
                     <h5>
                       Glamour
                     </h5>
@@ -174,7 +139,7 @@ export default function Mobile() {
           </div>
         </div>
       </section>
-      <section className={"get-started-cta animatedParent"} data-img={"url(assets/images/cta-bg-01.jpg)"} data-sequence={"200"}>
+      <section className={"get-started-cta animatedParent lx-cta-bg"} data-img={"url(assets/images/cta-bg-01.jpg)"} data-sequence={"200"}>
         <div className={"container"}>
           <div className={"row"}>
             <div className={"col-md-12"}>
@@ -189,13 +154,13 @@ export default function Mobile() {
               <ul>
                 <li className={"animated bounceInUp"} data-id={"3"}>
                   <a href={"/contact"} className={"text-center blue-cta-btn"}>
-                    <i className={"fa fa-check-circle"} aria-hidden={"true"}></i>
+                    <i className={"lx-btn-icon"}><IconCheck size={18} /></i>
                     Let's Talk Strategy
                   </a>
                 </li>
                 <li className={"animated bounceInUp"} data-id={"4"}>
                   <a href={"javascript:;"} title={"Live Chat"} target={"_self"} onClick={() => { if (typeof window.setButtonURL === "function") window.setButtonURL(); }} className={"text-center white-cta-btn"}>
-                    <i className={"fa fa-comments"} aria-hidden={"true"}></i>
+                    <i className={"lx-btn-icon"}><IconChat size={18} /></i>
                     Live Chat
                   </a>
                 </li>
@@ -204,7 +169,7 @@ export default function Mobile() {
                 <span className={"cta-call"}>
                   or call us at
                   <a href={"tel:+ 210 360 9849"}>
-                    <i className={"fa fa-phone"} aria-hidden={"true"}></i>
+                    <i className={"lx-btn-icon"}><IconPhone size={16} /></i>
                     + 210 360 9849
                   </a>
                 </span>
@@ -213,7 +178,7 @@ export default function Mobile() {
           </div>
         </div>
       </section>
-      <section className={"tab-pack-box pack-sec sec-pad"} data-img={"url(assets/images/packeges.jpg)"}>
+      <section className={"tab-pack-box pack-sec sec-pad"}>
         <div className={"container"}>
           <div className={"row"}>
             <div className={"col-lg-12 text-center"}>
@@ -239,7 +204,7 @@ export default function Mobile() {
                 <div className={"logodesign-package"}>
                   <ul className={"pack-list animatedParent"} data-sequence={"100"}>
                     <li className={"normal-offer-pack"}>
-                      <i className={"pkg-icn pkg-icn1"}></i>
+                      <i className={"pkg-icn pkg-icn1"}><IconLayers size={26} /></i>
                       <h3 className={"pack-title"}>
                         Family Session
                         <span>
@@ -278,20 +243,20 @@ export default function Mobile() {
                       <ul className={"pkg-cta"}>
                         <li>
                           <a href={"javascript:;"} title={"Live Chat"} target={"_self"} onClick={() => { if (typeof window.setButtonURL === "function") window.setButtonURL(); }}>
-                            <i className={"fa fa-comments"} aria-hidden={"true"}></i>
+                            <i className={"lx-btn-icon"}><IconChat size={18} /></i>
                             Live Chat
                           </a>
                         </li>
                         <li>
                           <a href={"tel:+ 210 360 9849"}>
-                            <i className={"fa fa-phone"} aria-hidden={"true"}></i>
+                            <i className={"lx-btn-icon"}><IconPhone size={16} /></i>
                             + 210 360 9849
                           </a>
                         </li>
                       </ul>
                     </li>
                     <li className={"normal-offer-pack"}>
-                      <i className={"pkg-icn pkg-icn2"}></i>
+                      <i className={"pkg-icn pkg-icn2"}><IconTrendUp size={26} /></i>
                       <h3 className={"pack-title"}>
                         Graduation Session
                         <span>
@@ -330,20 +295,20 @@ export default function Mobile() {
                       <ul className={"pkg-cta"}>
                         <li>
                           <a href={"javascript:;"} title={"Live Chat"} target={"_self"} onClick={() => { if (typeof window.setButtonURL === "function") window.setButtonURL(); }}>
-                            <i className={"fa fa-comments"} aria-hidden={"true"}></i>
+                            <i className={"lx-btn-icon"}><IconChat size={18} /></i>
                             Live Chat
                           </a>
                         </li>
                         <li>
                           <a href={"tel:+ 210 360 9849"}>
-                            <i className={"fa fa-phone"} aria-hidden={"true"}></i>
+                            <i className={"lx-btn-icon"}><IconPhone size={16} /></i>
                             + 210 360 9849
                           </a>
                         </li>
                       </ul>
                     </li>
                     <li className={"always-active pkg-active popular"}>
-                      <i className={"pkg-icn pkg-icn3"}></i>
+                      <i className={"pkg-icn pkg-icn3"}><IconTarget size={26} /></i>
                       <h3 className={"pack-title"}>
                         Birthday / Party
                         <span>
@@ -385,20 +350,20 @@ export default function Mobile() {
                       <ul className={"pkg-cta"}>
                         <li>
                           <a href={"javascript:;"} title={"Live Chat"} target={"_self"} onClick={() => { if (typeof window.setButtonURL === "function") window.setButtonURL(); }}>
-                            <i className={"fa fa-comments"} aria-hidden={"true"}></i>
+                            <i className={"lx-btn-icon"}><IconChat size={18} /></i>
                             Live Chat
                           </a>
                         </li>
                         <li>
                           <a href={"tel:+ 210 360 9849"}>
-                            <i className={"fa fa-phone"} aria-hidden={"true"}></i>
+                            <i className={"lx-btn-icon"}><IconPhone size={16} /></i>
                             + 210 360 9849
                           </a>
                         </li>
                       </ul>
                     </li>
                     <li className={"pkg-sealed-icn"}>
-                      <i className={"pkg-icn pkg-icn4"}></i>
+                      <i className={"pkg-icn pkg-icn4"}><IconGauge size={26} /></i>
                       <h3 className={"pack-title"}>
                         Wedding Events
                         <span>
@@ -441,13 +406,13 @@ export default function Mobile() {
                       <ul className={"pkg-cta"}>
                         <li>
                           <a href={"javascript:;"} title={"Live Chat"} target={"_self"} onClick={() => { if (typeof window.setButtonURL === "function") window.setButtonURL(); }}>
-                            <i className={"fa fa-comments"} aria-hidden={"true"}></i>
+                            <i className={"lx-btn-icon"}><IconChat size={18} /></i>
                             Live Chat
                           </a>
                         </li>
                         <li>
                           <a href={"tel:+ 210 360 9849"}>
-                            <i className={"fa fa-phone"} aria-hidden={"true"}></i>
+                            <i className={"lx-btn-icon"}><IconPhone size={16} /></i>
                             + 210 360 9849
                           </a>
                         </li>
@@ -506,7 +471,7 @@ export default function Mobile() {
                       <li className={"col-6 col-sm-4 col-md-3"} key={img.src}>
                         <a href={img.src} data-fancybox={MEDIA_PORTFOLIO_TABS[activePortfolioTab].group}>
                           <span className={"iconport"}>
-                            <i className={"fa fa-search-plus"} aria-hidden={"true"}></i>
+                            <i className={"lx-btn-icon"}><IconZoomIn size={22} /></i>
                           </span>
                           <img src={img.src} className={"img-responsive media-portfolio-thumb"} alt={img.alt} loading={"lazy"} />
                         </a>
@@ -534,25 +499,25 @@ export default function Mobile() {
                 <h4>
                   Discovery &amp; Consult
                 </h4>
-                <i className={"process-icn prcss-icn1"}></i>
+                <i className={"process-icn prcss-icn1"}><IconSearch size={26} /></i>
               </li>
               <li id={"mprocess2"} className={"prc-all prc-2"}>
                 <h4>
                   Strategy &amp; Planning
                 </h4>
-                <i className={"process-icn prcss-icn2"}></i>
+                <i className={"process-icn prcss-icn2"}><IconLayers size={26} /></i>
               </li>
               <li id={"mprocess3"} className={"prc-all prc-3"}>
                 <h4>
                   Execution &amp; Optimize
                 </h4>
-                <i className={"process-icn prcss-icn3"}></i>
+                <i className={"process-icn prcss-icn3"}><IconGauge size={26} /></i>
               </li>
               <li id={"mprocess4"} className={"prc-all prc-4"}>
                 <h4>
                   Results &amp; Growth
                 </h4>
-                <i className={"process-icn prcss-icn4"}></i>
+                <i className={"process-icn prcss-icn4"}><IconTrendUp size={26} /></i>
               </li>
             </ul>
             <div className={"process-content"}>

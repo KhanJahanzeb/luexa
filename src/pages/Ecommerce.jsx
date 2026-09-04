@@ -1,4 +1,8 @@
 import Layout from "../components/Layout.jsx";
+import Avatar from "../components/Avatar.jsx";
+import TrustStrip from "../components/TrustStrip.jsx";
+import HeroArt from "../components/HeroArt.jsx";
+import { IconCamera, IconChat, IconCheck, IconGauge, IconGlobe, IconHeadset, IconInfo, IconLayers, IconPhone, IconSearch, IconStorefront, IconTarget, IconTrendUp, IconWeb } from "../components/icons/Icon.jsx";
 
 export default function Ecommerce() {
   return (
@@ -6,9 +10,7 @@ export default function Ecommerce() {
       <div className={"ban-sec-slider"}>
         <div className={"banner-sec"}>
           <div className={"ban-slide"}>
-            <div className={"banner-pic"}>
-              <img src={"/assets/images/E-Commercebanoverlay-01.png"} alt={""} />
-            </div>
+            <div className={"banner-pic lx-hero-bg"}></div>
             <div className={"ban-txt-box"}>
               <div className={"container"}>
                 <div className={"row"}>
@@ -38,6 +40,9 @@ export default function Ecommerce() {
                       </div>
                     </div>
                   </div>
+                  <div className={"col-lg-6 lx-hero-art-col"}>
+                    <HeroArt theme={"connect"} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -47,46 +52,7 @@ export default function Ecommerce() {
       <section className={"ban-btm-box"}>
         <div className={"container"}>
           <div className={"row"}>
-            <div className={"ban-btm-logos"}>
-              <ul>
-                <li>
-                  <img src={"/assets/images/bclient-logos/01.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/02.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/03.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/04.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/05.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/06.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/07.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/08.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/09.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/10.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/11.png"} height={"50"} alt={""} />
-                </li>
-                <li>
-                  <img src={"/assets/images/bclient-logos/12.png"} height={"50"} alt={""} />
-                </li>
-              </ul>
-            </div>
+            <TrustStrip />
           </div>
         </div>
       </section>
@@ -95,7 +61,7 @@ export default function Ecommerce() {
           <div className={"row"}>
             <div className={"col-lg-5 col-md-5 animatedParent"} data-sequence={"150"}>
               <h2 className={"lg-hd animated bounceInLeft"} data-id={"1"}>
-                Customer expectations are
+                Customer expectations are{" "}
                 <strong>
                   higher than ever!
                 </strong>
@@ -138,7 +104,7 @@ export default function Ecommerce() {
             <div className={"col-lg-6 col-md-6 text-center"}>
               <div className={"concept-sldr-img"}>
                 <div>
-                  <img src={"/assets/images/invantory-management.png"} width={"500"} height={"385"} alt={""} />
+                  <HeroArt theme={"connect"} />
                 </div>
               </div>
             </div>
@@ -158,7 +124,7 @@ export default function Ecommerce() {
               <ul className={"type-ul"}>
                 <li className={"type-li1"}>
                   <div className={"type-box"}>
-                    <i className={"sprite-icn sprite-icn-static"}></i>
+                    <i className={"lx-icon-badge"}><IconGauge size={36} /></i>
                     <h5>
                       Cost Efficiency
                     </h5>
@@ -172,7 +138,7 @@ export default function Ecommerce() {
                 </li>
                 <li className={"type-li2"}>
                   <div className={"type-box"}>
-                    <i className={"sprite-icn sprite-icn-dynamic"}></i>
+                    <i className={"lx-icon-badge"}><IconGlobe size={36} /></i>
                     <h5>
                       24/7 Global Coverage
                     </h5>
@@ -186,7 +152,7 @@ export default function Ecommerce() {
                 </li>
                 <li className={"type-li3"}>
                   <div className={"type-box"}>
-                    <i className={"sprite-icn sprite-icn-cms"}></i>
+                    <i className={"lx-icon-badge"}><IconTrendUp size={36} /></i>
                     <h5>
                       Data-Driven Insights
                     </h5>
@@ -203,7 +169,7 @@ export default function Ecommerce() {
           </div>
         </div>
       </section>
-      <section className={"get-started-cta animatedParent"} data-img={"url(assets/images/cta-bg-01.jpg)"} data-sequence={"200"}>
+      <section className={"get-started-cta animatedParent lx-cta-bg"} data-img={"url(assets/images/cta-bg-01.jpg)"} data-sequence={"200"}>
         <div className={"container"}>
           <div className={"row"}>
             <div className={"col-md-12"}>
@@ -218,13 +184,13 @@ export default function Ecommerce() {
               <ul>
                 <li className={"animated bounceInUp"} data-id={"3"}>
                   <a href={"/contact"} className={"text-center blue-cta-btn"}>
-                    <i className={"fa fa-check-circle"} aria-hidden={"true"}></i>
+                    <i className={"lx-btn-icon"}><IconCheck size={18} /></i>
                     Let's Talk Strategy
                   </a>
                 </li>
                 <li className={"animated bounceInUp"} data-id={"4"}>
                   <a href={"javascript:;"} title={"Live Chat"} target={"_self"} onClick={() => { if (typeof window.setButtonURL === "function") window.setButtonURL(); }} className={"text-center white-cta-btn"}>
-                    <i className={"fa fa-comments"} aria-hidden={"true"}></i>
+                    <i className={"lx-btn-icon"}><IconChat size={18} /></i>
                     Live Chat
                   </a>
                 </li>
@@ -233,7 +199,7 @@ export default function Ecommerce() {
                 <span className={"cta-call"}>
                   or call us at
                   <a href={"tel:+ 210 360 9849"}>
-                    <i className={"fa fa-phone"} aria-hidden={"true"}></i>
+                    <i className={"lx-btn-icon"}><IconPhone size={16} /></i>
                     + 210 360 9849
                   </a>
                 </span>
@@ -270,7 +236,7 @@ export default function Ecommerce() {
                 <li className={"type-li1"}>
                   <a href={"/website"}>
                     <div className={"type-box"}>
-                      <i className={"sprite-icn sprite-icn-animated"}></i>
+                      <i className={"lx-icon-badge"}><IconWeb size={36} /></i>
                       <h5>
                         Lunexa Digital
                       </h5>
@@ -283,7 +249,7 @@ export default function Ecommerce() {
                 <li className={"type-li2"}>
                   <a href={"/branding"}>
                     <div className={"type-box"}>
-                      <i className={"sprite-icn sprite-icn-typographic"}></i>
+                      <i className={"lx-icon-badge"}><IconStorefront size={36} /></i>
                       <h5>
                         Lunexa LaunchPad
                       </h5>
@@ -296,7 +262,7 @@ export default function Ecommerce() {
                 <li className={"type-li3"}>
                   <a href={"/ecommerce"}>
                     <div className={"type-box"}>
-                      <i className={"sprite-icn sprite-icn-illustrative"}></i>
+                      <i className={"lx-icon-badge"}><IconHeadset size={36} /></i>
                       <h5>
                         Lunexa Connect
                       </h5>
@@ -309,7 +275,7 @@ export default function Ecommerce() {
                 <li className={"type-li4"}>
                   <a href={"/mobile"}>
                     <div className={"type-box"}>
-                      <i className={"sprite-icn sprite-icn-iconic"}></i>
+                      <i className={"lx-icon-badge"}><IconCamera size={36} /></i>
                       <h5>
                         Lunexa Media
                       </h5>
@@ -423,7 +389,7 @@ export default function Ecommerce() {
                     Lunexa completely transformed our online presence! Their digital marketing strategies helped us double our revenue in just six months.
                   </div>
                   <div className={"testi-author"}>
-                    <img src={"/assets/images/logo-pic-01.png"} alt={""} />
+                    <Avatar name={"Emma Richard"} size={56} />
                     <p>
                       Emma Richard
                       <span>
@@ -444,7 +410,7 @@ export default function Ecommerce() {
                     We've worked with many agencies before, but Lunexa stands out. Their data-driven approach and creative solutions gave us an edge over competitors.
                   </div>
                   <div className={"testi-author"}>
-                    <img src={"/assets/images/logo-pic-01.png"} alt={""} />
+                    <Avatar name={"David Mont"} size={56} />
                     <p>
                       David Mont
                       <span>
@@ -465,7 +431,7 @@ export default function Ecommerce() {
                     From SEO to paid ads, Lunexa nailed every aspect of our campaign. Our website traffic skyrocketed, and lead generation has never been better!
                   </div>
                   <div className={"testi-author"}>
-                    <img src={"/assets/images/logo-pic-01.png"} alt={""} />
+                    <Avatar name={"Sophia Lewis"} size={56} />
                     <p>
                       Sophia Lewis
                       <span>
@@ -501,25 +467,25 @@ export default function Ecommerce() {
                 <h4>
                   Discovery &amp; Consult
                 </h4>
-                <i className={"process-icn prcss-icn1"}></i>
+                <i className={"process-icn prcss-icn1"}><IconSearch size={26} /></i>
               </li>
               <li id={"eprocess2"} className={"prc-all prc-2"}>
                 <h4>
                   Strategy &amp; Planning
                 </h4>
-                <i className={"process-icn prcss-icn2"}></i>
+                <i className={"process-icn prcss-icn2"}><IconLayers size={26} /></i>
               </li>
               <li id={"eprocess3"} className={"prc-all prc-3"}>
                 <h4>
                   Execution &amp; Optimize
                 </h4>
-                <i className={"process-icn prcss-icn3"}></i>
+                <i className={"process-icn prcss-icn3"}><IconGauge size={26} /></i>
               </li>
               <li id={"eprocess4"} className={"prc-all prc-4"}>
                 <h4>
                   Results &amp; Growth
                 </h4>
-                <i className={"process-icn prcss-icn4"}></i>
+                <i className={"process-icn prcss-icn4"}><IconTrendUp size={26} /></i>
               </li>
             </ul>
             <div className={"process-content"}>
@@ -634,7 +600,7 @@ export default function Ecommerce() {
                 <div className={"logodesign-package"}>
                   <ul className={"pack-list animatedParent"} data-sequence={"100"}>
                     <li className={"less-offer-pack"}>
-                      <i className={"pkg-icn pkg-icn1"}></i>
+                      <i className={"pkg-icn pkg-icn1"}><IconLayers size={26} /></i>
                       <h3 className={"pack-title"}>
                         Lunexa One Team Plan
                         <span>
@@ -733,7 +699,7 @@ export default function Ecommerce() {
                         <li>
                           EXCLUSIVE LUNEXA ONE BENEFITS:
                           <div className={"icn-tooltip"}>
-                            <i className={"fa fa-info-circle"} aria-hidden={"true"}></i>
+                            <i className={"lx-btn-icon"}><IconInfo size={14} /></i>
                             <div className={"tooltip-innr"}>
                               (Dedicated Account Manager, Priority Support)
                             </div>
@@ -814,13 +780,13 @@ export default function Ecommerce() {
                       <ul className={"pkg-cta"}>
                         <li>
                           <a href={"javascript:;"} title={"Live Chat"} target={"_self"} onClick={() => { if (typeof window.setButtonURL === "function") window.setButtonURL(); }}>
-                            <i className={"fa fa-comments"} aria-hidden={"true"}></i>
+                            <i className={"lx-btn-icon"}><IconChat size={18} /></i>
                             Live Chat
                           </a>
                         </li>
                         <li>
                           <a href={"tel:+ 210 360 9849"}>
-                            <i className={"fa fa-phone"} aria-hidden={"true"}></i>
+                            <i className={"lx-btn-icon"}><IconPhone size={16} /></i>
                             + 210 360 9849
                           </a>
                         </li>
@@ -854,7 +820,7 @@ export default function Ecommerce() {
                 <div className={"logodesign-package"}>
                   <ul className={"pack-list animatedParent"} data-sequence={"100"}>
                     <li className={"normal-offer-pack"}>
-                      <i className={"pkg-icn pkg-icn1"}></i>
+                      <i className={"pkg-icn pkg-icn1"}><IconLayers size={26} /></i>
                       <h3 className={"pack-title"}>
                         Clinic &amp; Healthcare Support
                       </h3>
@@ -885,7 +851,7 @@ export default function Ecommerce() {
                       </div>
                     </li>
                     <li className={"normal-offer-pack"}>
-                      <i className={"pkg-icn pkg-icn2"}></i>
+                      <i className={"pkg-icn pkg-icn2"}><IconTrendUp size={26} /></i>
                       <h3 className={"pack-title"}>
                         Real Estate Support
                       </h3>
@@ -916,7 +882,7 @@ export default function Ecommerce() {
                       </div>
                     </li>
                     <li className={"normal-offer-pack"}>
-                      <i className={"pkg-icn pkg-icn3"}></i>
+                      <i className={"pkg-icn pkg-icn3"}><IconTarget size={26} /></i>
                       <h3 className={"pack-title"}>
                         E-Commerce &amp; Retail Support
                       </h3>
@@ -947,7 +913,7 @@ export default function Ecommerce() {
                       </div>
                     </li>
                     <li className={"normal-offer-pack"}>
-                      <i className={"pkg-icn pkg-icn1"}></i>
+                      <i className={"pkg-icn pkg-icn1"}><IconLayers size={26} /></i>
                       <h3 className={"pack-title"}>
                         Education &amp; EdTech Support
                       </h3>
@@ -978,7 +944,7 @@ export default function Ecommerce() {
                       </div>
                     </li>
                     <li className={"normal-offer-pack"}>
-                      <i className={"pkg-icn pkg-icn2"}></i>
+                      <i className={"pkg-icn pkg-icn2"}><IconTrendUp size={26} /></i>
                       <h3 className={"pack-title"}>
                         Custom Outsourcing Teams
                       </h3>
@@ -1003,7 +969,7 @@ export default function Ecommerce() {
                       </div>
                     </li>
                     <li className={"normal-offer-pack"}>
-                      <i className={"pkg-icn pkg-icn3"}></i>
+                      <i className={"pkg-icn pkg-icn3"}><IconTarget size={26} /></i>
                       <h3 className={"pack-title"}>
                         Digital Marketing Assistant
                       </h3>
@@ -1034,7 +1000,7 @@ export default function Ecommerce() {
                       </div>
                     </li>
                     <li className={"normal-offer-pack"}>
-                      <i className={"pkg-icn pkg-icn1"}></i>
+                      <i className={"pkg-icn pkg-icn1"}><IconLayers size={26} /></i>
                       <h3 className={"pack-title"}>
                         Sales Agent
                       </h3>

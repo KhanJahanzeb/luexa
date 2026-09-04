@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { IconChat, IconChevronUp, IconClock, IconClose, IconGauge, IconPhone, IconUser } from "../components/icons/Icon.jsx";
 import Layout from "../components/Layout.jsx";
 import CountrySelect from "../components/CountrySelect.jsx";
+import HeroArt from "../components/HeroArt.jsx";
 
 export default function Contact() {
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
@@ -27,9 +29,7 @@ export default function Contact() {
       <div className={"ban-sec-slider"}>
         <div className={"banner-sec"}>
           <div className={"ban-slide"}>
-            <div className={"banner-pic"}>
-              <img src={"/assets/images/contact-banner.jpg"} alt={""} />
-            </div>
+            <div className={"banner-pic lx-hero-bg"}></div>
             <div className={"ban-txt-box"}>
               <div className={"container"}>
                 <div className={"row"}>
@@ -50,6 +50,9 @@ export default function Contact() {
                         </a>
                       </div>
                     </div>
+                  </div>
+                  <div className={"col-lg-6 lx-hero-art-col"}>
+                    <HeroArt theme={"contact"} />
                   </div>
                 </div>
               </div>
@@ -156,20 +159,16 @@ export default function Contact() {
       </section>
       <div className={"side-bar-sm-frm rght-open"}>
         <div className={"side-head"}>
-          Get
-          <strong>
-            80%
-          </strong>
-          Discount
+          Get In Touch
           <span>
-            <i className={"fa fa-chevron-up"} aria-hidden={"true"}></i>
+            <i className={"lx-btn-icon"}><IconChevronUp size={16} /></i>
           </span>
         </div>
       </div>
       <div className={"side-bar-sm-frm lft-open"}>
         <div className={"side-head"}>
           <span>
-            <i className={"fa fa-phone"} aria-hidden={"true"}></i>
+            <i className={"lx-btn-icon"}><IconPhone size={16} /></i>
           </span>
         </div>
       </div>
@@ -179,7 +178,7 @@ export default function Contact() {
           <h2 className={"sec-hd"}>
             Let Us Call You
             <span>
-              Our experts are here to assist you with your design queries.
+              Our experts are here to help you grow your business.
             </span>
           </h2>
           <form action={"#"} method={"POST"} id={"form2"} className={"js-recaptcha-form"}>
@@ -934,9 +933,9 @@ export default function Contact() {
         <div className={"popup-slide-close"}></div>
         <div className={"popup-slide-innr"}>
           <h2 className={"sec-hd"}>
-            Get Exclusive Designs
+            Get In Touch
             <span>
-              Tailored to your specification, guaranteeing your satisfaction
+              Tailored strategies, built around your business goals
             </span>
           </h2>
           <form action={"#"} method={"POST"} id={"form3"} className={"js-recaptcha-form"}>
@@ -1707,7 +1706,7 @@ export default function Contact() {
         </div>
       </div>
       <a href={"tel:+ 210 360 9849"} className={"fixed-mob-call-icon"}>
-        <i className={"fa fa-phone"} aria-hidden={"true"}></i>
+        <i className={"lx-btn-icon"}><IconPhone size={16} /></i>
       </a>
       <div className={"popup-layout popup-layout1"} id={"popup-layout"}>
         <div className={"popup-inner"}>
@@ -1718,7 +1717,7 @@ export default function Contact() {
           </div>
           <div className={"col-md-5 no-pad"}>
             <a className={"popup-close"} href={"javascript:;"}>
-              <i className={"fa fa-times"} aria-hidden={"true"}></i>
+              <i className={"lx-btn-icon"}><IconClose size={16} /></i>
             </a>
             <form id={"popupform"} className={"js-recaptcha-form"}>
               <input type={"hidden"} id={"package_html"} name={"package_html"} className={"package_html"} defaultValue={""} />
@@ -2482,15 +2481,15 @@ export default function Contact() {
           </div>
           <div className={"col-md-5 no-pad"}>
             <a className={"popup-close"} href={"javascript:;"}>
-              <i className={"fa fa-times"} aria-hidden={"true"}></i>
+              <i className={"lx-btn-icon"}><IconClose size={16} /></i>
             </a>
             <form id={"form5"} className={"js-recaptcha-form"} action={"#"} methd={"post"}>
               <div className={"popup-header sm-headngtxt"}>
                 <h3>
-                  Customized Logo Designs
+                  Get In Touch
                 </h3>
                 <p className={"ban-subhd"}>
-                  Deliver your brand message effectively
+                  Tell us about your business and we'll get back to you shortly
                 </p>
               </div>
               <div className={"popup-bdy"}>
@@ -3251,7 +3250,7 @@ export default function Contact() {
           <div>
             <form id={"form6"} className={"js-recaptcha-form"} action={"#"} methd={"post"}>
               <a className={"slidefrm-close"} href={"javascript:;"}>
-                <i className={"fa fa-times"} aria-hidden={"true"}></i>
+                <i className={"lx-btn-icon"}><IconClose size={16} /></i>
               </a>
               <div className={"slidefrm-header"}>
                 <img src={"/assets/images/sidefrm-header.png"} alt={""} />
@@ -4181,13 +4180,13 @@ export default function Contact() {
                   <ul className={"slide-cta"}>
                     <li>
                       <a href={"javascript:;"} title={"Live Chat"} target={"_self"} onClick={() => { if (typeof window.setButtonURL === "function") window.setButtonURL(); }}>
-                        <i className={"fa fa-comments"} aria-hidden={"true"}></i>
+                        <i className={"lx-btn-icon"}><IconChat size={18} /></i>
                         Live Chat
                       </a>
                     </li>
                     <li>
                       <a href={"tel:+ 210 360 9849"}>
-                        <i className={"fa fa-phone"} aria-hidden={"true"}></i>
+                        <i className={"lx-btn-icon"}><IconPhone size={16} /></i>
                         + 210 360 9849
                       </a>
                     </li>
@@ -4201,56 +4200,36 @@ export default function Contact() {
                 <div className={"clearfix"}></div>
                 <ul className={"features-ul"}>
                   <li>
-                    <i className={"feature-icn feature-icn-1"}></i>
+                    <i className={"lx-icon-badge"} style={{width:48,height:48,borderRadius:"50%",background:"#f2edff",display:"inline-flex",margin:"0 auto"}}><IconChat size={22} /></i>
                     <h5>
-                      100% Satisfaction
+                      Free
                       <br />
-                      Guarantee
+                      Consultation
                     </h5>
                   </li>
                   <li>
-                    <i className={"feature-icn feature-icn-3"}></i>
+                    <i className={"lx-icon-badge"} style={{width:48,height:48,borderRadius:"50%",background:"#f2edff",display:"inline-flex",margin:"0 auto"}}><IconUser size={22} /></i>
                     <h5>
-                      Money Back
+                      Dedicated Account
                       <br />
-                      Guarantee
+                      Manager
                     </h5>
                   </li>
                   <li>
-                    <i className={"feature-icn feature-icn-4"}></i>
+                    <i className={"lx-icon-badge"} style={{width:48,height:48,borderRadius:"50%",background:"#f2edff",display:"inline-flex",margin:"0 auto"}}><IconGauge size={22} /></i>
                     <h5>
-                      24/7 Design
+                      Transparent
                       <br />
-                      Consultancy
+                      Reporting
                     </h5>
                   </li>
                   <li>
-                    <i className={"feature-icn feature-icn-5"}></i>
+                    <i className={"lx-icon-badge"} style={{width:48,height:48,borderRadius:"50%",background:"#f2edff",display:"inline-flex",margin:"0 auto"}}><IconClock size={22} /></i>
                     <h5>
-                      Award Winning
+                      8+ Years
                       <br />
-                      Designers
+                      Experience
                     </h5>
-                  </li>
-                </ul>
-                <h5 className={"award-hd"}>
-                  Our Awards
-                </h5>
-                <ul className={"award-sldr"}>
-                  <li>
-                    <i className={"awrd-icn awrd-icn1"}></i>
-                  </li>
-                  <li>
-                    <i className={"awrd-icn awrd-icn2"}></i>
-                  </li>
-                  <li>
-                    <i className={"awrd-icn awrd-icn3"}></i>
-                  </li>
-                  <li>
-                    <i className={"awrd-icn awrd-icn4"}></i>
-                  </li>
-                  <li>
-                    <i className={"awrd-icn awrd-icn5"}></i>
                   </li>
                 </ul>
               </div>
@@ -4260,10 +4239,10 @@ export default function Contact() {
         </div>
       </div>
       <a href={"tel:+ 210 360 9849"} className={"mob-call-icon"}>
-        <i className={"fa fa-phone"} aria-hidden={"true"}></i>
+        <i className={"lx-btn-icon"}><IconPhone size={16} /></i>
       </a>
       <a href={"javascript:"} id={"return-to-top"}>
-        <i className={"fa fa-chevron-up"} aria-hidden={"true"}></i>
+        <i className={"lx-btn-icon"}><IconChevronUp size={16} /></i>
       </a>
       <style>
         {"\n        .checkbox-wrap {\n            display: flex;\n            align-items: flex-start;\n            gap: 10px;\n            text-align: left;\n            margin-bottom: 15px;\n        }\n\n        .checkbox-wrap label {\n            line-height: 1.3;\n            color: white;\n        }\n\n        .checkbox-wrap input {\n            margin-top: 4px;\n            width: auto !important;\n        }\n    "}
