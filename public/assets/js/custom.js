@@ -975,11 +975,13 @@ $('.return-to-top').click(function() { // When arrow is clicked
 });
 
 
-(function($) {
-    $(window).on("load", function() {
-        $(".pack-spec-scroll").mCustomScrollbar();
-    });
-})(jQuery);
+// .pack-spec-scroll (the feature list inside every pricing card) used to get
+// wrapped in the mCustomScrollbar plugin here. The plugin only reskins the
+// scrollbar chrome — the actual scrolling comes from the plain CSS
+// max-height/overflow-y rule on .pack-features (see lunexa-visuals.css) — and on
+// mobile that plugin's JS-measured wrapper is exactly the kind of thing that can
+// desync from the real content height. Dropped in favor of the native scrollbar,
+// which also means touch devices get normal momentum scrolling for free.
 
 
 
@@ -1298,21 +1300,14 @@ if ($(window).width() < 824) {
         }]
     });
 
-    $('ul.type-ul').slick({
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        dots: false,
-        arrows: false,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        responsive: [{
-            breakpoint: 480,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-            }
-        }]
-    });
+    // ul.type-ul (the 3-4 "feature/type" cards used on nearly every page) used to get
+    // Slick-carousel-converted here. Slick sets each slide's pixel width from the
+    // container's width at the moment this runs; on a freshly-mounted React page that
+    // width can still be settling (webfont swap, etc.), so the cards ended up
+    // inconsistently sized with adjacent cards peeking in at the edges instead of a
+    // clean stack. Replaced with a plain CSS grid (see lunexa-visuals.css's
+    // ".type-ul" mobile/tablet rules) — a 3-4 item list doesn't need a carousel, and
+    // a static grid can't desync from the container the way a JS-measured one can.
 
     $('ul.features-ul li').removeClass('bounceInLeft');
     $('.str-brand-sec li').removeClass('growIn');

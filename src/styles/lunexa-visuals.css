@@ -333,3 +333,198 @@ ul.features-ul li h5 br {
     margin-top: 4px;
   }
 }
+
+/* Several off-canvas panels on the site (.slidefrm-inner "get a quote"
+   drawer used on 12+ pages, plus similar side-bar-sm-frm panels) are
+   parked at rest with position:absolute; right:-500px — well past the
+   right edge of the viewport, revealed by sliding to right:0 when
+   opened. Because they're absolutely positioned rather than
+   display:none, that resting position still counts toward the page's
+   scrollable area, so every one of those pages gets a genuine
+   horizontal scrollbar at every width capable of scrolling into empty
+   space (confirmed: ~222px of extra scrollWidth on Home at 1440px
+   wide). main.css only hides this by setting body{overflow-x:hidden}
+   below 824px — extend that to every width, since the drawers close
+   over the same off-screen resting spot regardless of viewport size. */
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   Mobile/tablet responsiveness pass (2026-09). Every rule below
+   targets a class shared across every page (process-ul, type-ul,
+   pack-features, sec-pad, sec-hd, ...), not a single page, so the
+   fix applies everywhere that pattern is reused.
+   ============================================================ */
+
+/* ---- Headings scale smoothly instead of jumping ----
+   .sec-hd (36px everywhere) and the hero .ban-txt h1 (41px) had a
+   single hard-coded size all the way down to 320px — main.css's own
+   mobile block only adjusts .sec-hd's line-height, never its size,
+   and never touches .ban-txt h1's size at all. clamp() replaces the
+   fixed size so long headings shrink gradually instead of wrapping
+   to 3-4 tight lines on a phone. The line-height fix earlier in this
+   file still applies on top of this. */
+.sec-hd {
+  font-size: clamp(24px, 6vw, 36px);
+}
+
+.ban-txt h1 {
+  font-size: clamp(26px, 7.5vw, 41px);
+}
+
+/* ---- ul.type-ul: the 3-4 "feature/type" cards used on every page
+   (Home's "Data-Driven Approach / Creative & Innovative / Transparent
+   Reporting", every division page's 3 pitch cards, etc.) ----
+   custom.js used to hand this list to the Slick carousel below
+   824px (see the comment left in custom.js). Slick sizes each slide
+   from the container's width at the moment it runs, and on a
+   freshly-mounted React page that width isn't always settled yet —
+   in practice the cards came out inconsistently sized with the
+   neighboring cards' edges peeking in on both sides instead of a
+   clean single card. A plain CSS grid can't desync from its
+   container like that, and a 3-4 item list doesn't need a carousel
+   at all — it replaces the JS conversion entirely below 992px. */
+@media (max-width: 991px) {
+  ul.type-ul {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    text-align: left;
+    margin: 48px 0 0;
+  }
+  ul.type-ul li {
+    display: block !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+  ul.type-ul li .type-box {
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+  ul.type-ul li .type-box .view-more {
+    margin-top: auto;
+    padding-top: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  ul.type-ul {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin: 36px 0 0;
+    padding: 0 4px;
+  }
+}
+
+/* ---- process-ul tab rows ("Our Process" / "Simple Steps to Digital
+   Success" — every 4-step and 6-step version) ----
+   main.css already turns this into a horizontally-scrollable strip
+   below 824px (white-space:nowrap + overflow:scroll) rather than
+   trying to cram every tab into the viewport — that part is sound.
+   What it's missing: any indication that it scrolls (a bare browser
+   scrollbar sitting under the tabs) and touch-friendly momentum
+   scrolling + snapping. Add those without changing the strip
+   approach itself. */
+@media (max-width: 823px) {
+  ul.process-ul {
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  ul.process-ul::-webkit-scrollbar {
+    display: none;
+  }
+  ul.process-ul li {
+    scroll-snap-align: start;
+  }
+  /* Bootstrap's col-md-1 spacer columns in each .process-tabs panel
+     collapse to empty full-width blocks below 768px (no content,
+     just grid gutter padding) — pure wasted vertical space once the
+     panel is a single stacked column. */
+  .process-tabs .col-md-1 {
+    display: none;
+  }
+}
+
+/* ---- Pricing card feature lists (.pack-features, every plan card
+   on Home/Website/Branding/Ecommerce/Packages) ----
+   main.css hard-codes height:130px + overflow:hidden here, with the
+   mCustomScrollbar plugin (now removed, see custom.js) as the only
+   way to reach anything past the first ~5 lines. On a single-column
+   mobile layout there's no row-alignment reason to clip the list at
+   all, so let it take its natural height; on wider layouts, where
+   several plan cards still need to line up in a row, give it a
+   taller plain-CSS scroll area instead of the cramped 130px window. */
+.pack-features {
+  height: auto;
+  max-height: 220px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.pack-features::-webkit-scrollbar {
+  width: 6px;
+}
+
+.pack-features::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 3px;
+}
+
+@media (max-width: 823px) {
+  .pack-features {
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+/* .pack-price p ("/month + Advertising Budget Separate") is an
+   inline-block sized for one short line, with a left divider rule
+   meant to sit beside the price. On a narrow card the text wraps to
+   2-3 lines and the divider runs through the middle of it instead of
+   sitting beside a single line. */
+@media (max-width: 480px) {
+  .pack-price p {
+    display: block;
+    border-left: 0;
+    padding: 6px 0 0;
+    text-align: center;
+  }
+}
+
+/* .pack-ordernow ("Get Started Now") has a tablet override
+   (main.css, 824-1025px) but nothing below that, so it keeps its
+   desktop 75px side padding on phones — on a full-width mobile
+   pricing card that reads as one oversized button rather than a
+   normal CTA. */
+@media (max-width: 823px) {
+  .pack-ordernow {
+    padding: 12px 32px;
+    margin: 0 0 10px;
+  }
+}
+
+/* ---- Section spacing (.sec-pad, used on nearly every section
+   wrapper site-wide) ----
+   Desktop is 150px top+bottom; main.css's only mobile step drops
+   straight to 20px below 824px with nothing in between for tablets,
+   and 20px reads as cramped on a phone rather than "compact but
+   still breathable". Add a tablet step and bring mobile into a more
+   comfortable range. */
+@media (min-width: 824px) and (max-width: 1025px) {
+  .sec-pad {
+    padding: 90px 0;
+  }
+}
+
+@media (max-width: 823px) {
+  .sec-pad {
+    padding: 56px 0;
+  }
+}
