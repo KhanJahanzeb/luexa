@@ -303,25 +303,6 @@ ul.features-ul li h5 br {
   display: block !important;
 }
 
-/* main.css's mobile rule turns ul.process-ul (the 4-step "Discovery &
-   Consult / Strategy & Planning / ..." row) into a horizontally-scrollable
-   strip: white-space:nowrap + overflow:scroll, so the 4 steps share one
-   unwrapped line instead of stacking. That's a reasonable mobile pattern on
-   its own, but .process-ul li has no spacing, so the step labels butt
-   directly against each other with zero gap ("Discovery &
-   ConsultStrategy & Planning..."). Add breathing room between them and stop
-   each label from shrink-wrapping to illegibly narrow. */
-@media (max-width: 823px) {
-  .process-ul li {
-    width: auto !important;
-    padding: 0 14px;
-    margin-right: 6px;
-  }
-  .process-ul li h4 {
-    padding: 0 2px;
-  }
-}
-
 /* main.css's mobile rule sets .special-packg-sec h2 span (the "Your
    Marketing Department Without the Cost of Building One" subtitle in the
    mega-package promo) to line-height:10px against a 20px font-size — when
@@ -421,32 +402,192 @@ body {
   }
 }
 
-/* ---- process-ul tab rows ("Our Process" / "Simple Steps to Digital
-   Success" — every 4-step and 6-step version) ----
-   main.css already turns this into a horizontally-scrollable strip
-   below 824px (white-space:nowrap + overflow:scroll) rather than
-   trying to cram every tab into the viewport — that part is sound.
-   What it's missing: any indication that it scrolls (a bare browser
-   scrollbar sitting under the tabs) and touch-friendly momentum
-   scrolling + snapping. Add those without changing the strip
-   approach itself. */
-@media (max-width: 823px) {
+/* ============================================================
+   Process / steps / tabs component ("Our Process", "Simple Steps to
+   Digital Success", and the equivalent section on every division
+   page). One shared system — every page below reuses the exact same
+   markup/class names (.process-ul, .prc-all, .process-icn,
+   .process-content, .process-tabs): Home (6 steps), Seo, Crm (6
+   steps), and Website, Branding, Ecommerce, Mobile, About (4 steps
+   each). Nothing here is scoped to one page's heading or step count.
+   ============================================================ */
+
+/* ---- Remove the old "traveling marker" ----
+   i.actv-ul was a SECOND circle (main.css) — independent of the real
+   per-step .process-icn icons — absolutely positioned at hand-picked
+   pixel offsets (left: 54px / 234px / 415px / 597px / 778px / 959px
+   for steps 1-6) that only land under the real icon at the one fixed
+   desktop width the original static template assumed. Its ::before is
+   a CSS border-triangle pointer meant to sit under it, colored to
+   match. In this fluid, percentage-width layout the marker drifts out
+   from under the real icon at most widths; at the last step (Home's
+   "Ongoing Support") the 959px position plus the marker's own 69px
+   width plus the pointer triangle run past where the real 6th icon
+   actually sits, which is what reads as a distorted speech-bubble/pin.
+   The matching ul::before/::after "progress fill" line has the same
+   hand-tuned-per-step-count problem. Both removed outright — the real
+   .process-icn is now the only "current step" indicator (see below),
+   so there's nothing left that can drift out of alignment. */
+ul.process-ul > i.actv-ul,
+i.actv-ul,
+i.actv-ul::before,
+ul.process-ul::before,
+ul.process-ul::after {
+  display: none !important;
+}
+
+/* ---- Layout: dynamic, works for any step count (3-6+) ----
+   grid-auto-flow:column + grid-auto-columns builds exactly as many
+   equal-width columns as there are <li> children, with no repeat(N,...)
+   and no per-count CSS — replacing main.css's display:inline-block;
+   width:16% (hard-coded for 6 items), which is why the 4-step pages
+   never quite matched Home's spacing. */
+ul.process-ul {
+  --process-icon-size: 64px;
+  display: grid !important;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  align-items: start;
+  column-gap: 8px;
+  position: relative;
+  margin: 48px 0 24px;
+  padding: 0;
+  white-space: normal;
+  overflow: visible;
+}
+
+ul.process-ul li.prc-all {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  width: auto !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 8px 24px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+}
+
+/* The icon renders visually first regardless of DOM order (every
+   page's JSX puts the <h4> label before the icon <i>), so the
+   connector below always sits at a predictable, label-length-
+   independent height instead of drifting with wrapped text. */
+ul.process-ul li.prc-all .process-icn {
+  order: -1;
+  position: relative;
+  z-index: 1;
+  width: var(--process-icon-size);
+  height: var(--process-icon-size);
+  margin: 0 0 12px;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+ul.process-ul li.prc-all h4 {
+  order: 1;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.3em;
+}
+
+/* Connector: each step draws the segment from its OWN icon's center to
+   the NEXT step's icon center — one grid column is exactly that
+   distance, so the line is continuous and correctly spaced no matter
+   how many steps exist. The last step has nothing after it. */
+ul.process-ul li.prc-all:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: calc(var(--process-icon-size) / 2);
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background: #e2dfe8;
+  z-index: 0;
+}
+
+/* Active step: only background/border/icon-and-label color change.
+   Geometry (width, height, border-radius, position) is untouched, so
+   the active icon is always the exact same size/shape as every
+   inactive one — nothing shifts or resizes on activation. */
+ul.process-ul li.prc-all.active .process-icn {
+  background: #6a3df5;
+  border-color: #6a3df5;
+  color: #fff;
+}
+
+ul.process-ul li.prc-all:not(.active):hover .process-icn {
+  border-color: #6a3df5;
+}
+
+/* main.css's own .process-ul li.active h4 { color: #fc7e00 } is an
+   orphaned accent color that doesn't match anything else on the site.
+   Align it with the same purple used for every other active icon
+   badge (.lx-icon-badge) so the active step reads as one color, not
+   two unrelated ones. */
+ul.process-ul li.prc-all.active h4 {
+  color: #6a3df5;
+}
+
+/* ---- Tablet: same horizontal grid, just tighter ----
+   768-991px still has room for 4-6 short labels across in a row (the
+   grid divides available width evenly and lets each label wrap to 2
+   lines if needed) — no reason to drop to the mobile vertical layout
+   this early. */
+@media (min-width: 768px) and (max-width: 991px) {
   ul.process-ul {
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x proximity;
-    scrollbar-width: none;
-    padding-bottom: 4px;
+    --process-icon-size: 52px;
+    column-gap: 4px;
   }
-  ul.process-ul::-webkit-scrollbar {
-    display: none;
+  ul.process-ul li.prc-all {
+    padding: 0 4px 20px;
   }
-  ul.process-ul li {
-    scroll-snap-align: start;
+  ul.process-ul li.prc-all h4 {
+    font-size: 12px;
+  }
+}
+
+/* ---- Mobile: vertical timeline ----
+   Below 768px there isn't room for 4-6 columns without either
+   overlapping text or shrinking icons into illegibility, so the row
+   becomes a column: icon-left, label-right, connector running down
+   through the icon centers. min-height keeps every step the same
+   height so each connector segment (drawn the same way as the
+   horizontal one, just rotated) lands exactly on the next icon's
+   center regardless of how many steps exist. */
+@media (max-width: 767px) {
+  ul.process-ul {
+    --process-icon-size: 52px;
+    display: flex !important;
+    flex-direction: column;
+    margin: 32px 0 16px;
+    overflow: visible;
+  }
+  ul.process-ul li.prc-all {
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 12px 4px;
+    gap: 16px;
+    min-height: calc(var(--process-icon-size) + 24px);
+  }
+  ul.process-ul li.prc-all .process-icn {
+    margin: 0;
+    flex-shrink: 0;
+  }
+  ul.process-ul li.prc-all h4 {
+    font-size: 15px;
+  }
+  ul.process-ul li.prc-all:not(:last-child)::after {
+    top: 50%;
+    left: calc(var(--process-icon-size) / 2);
+    width: 2px;
+    height: 100%;
   }
   /* Bootstrap's col-md-1 spacer columns in each .process-tabs panel
-     collapse to empty full-width blocks below 768px (no content,
-     just grid gutter padding) — pure wasted vertical space once the
-     panel is a single stacked column. */
+     collapse to empty full-width blocks below 768px (no content, just
+     grid gutter padding) — pure wasted vertical space once the panel
+     is a single stacked column. */
   .process-tabs .col-md-1 {
     display: none;
   }

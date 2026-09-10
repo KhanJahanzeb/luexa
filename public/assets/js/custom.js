@@ -400,75 +400,53 @@ $('.popup-close').on('click', function() {
     $(".popup-header h3").html("");
     $(".popup-header p").html("");
 });
-$('ul.process-ul li').on('click', function() {
-    $('ul.process-ul').addClass('process-animate');
-    var tab_id = $(this).attr('id');
-    $('ul.process-ul li').removeClass('active');
-    $(this).addClass('active');
-    $('.process-tabs').removeClass('active');
-    $("." + tab_id).fadeIn('slow').addClass('active');
-    $('ul.process-ul').removeClass('process1');
-    $('ul.process-ul').removeClass('process2');
-    $('ul.process-ul').removeClass('process3');
-    $('ul.process-ul').removeClass('process4');
-    $('ul.process-ul').removeClass('process5');
-    $('ul.process-ul').removeClass('process6');
-    $('ul.process-ul').addClass(tab_id);
+// Process/steps tabs (Home, Website, Branding, Ecommerce, Mobile, About, Seo,
+// Crm all share this exact markup). This used to switch panels by string-
+// matching each <li>'s id attribute against a ".processN" class on both
+// ul.process-ul and the target .process-tabs panel — which only works when a
+// page's step ids are literally "process1".."process6" (true on Home/Seo/Crm)
+// and silently does nothing on Website/Branding/Ecommerce/Mobile/About, whose
+// ids are prefixed ("wprocess1", "bprocess1", "eprocess1", "mprocess1",
+// "aprocess1") to stay unique across a page that also has other numbered
+// ids — clicking a step there never matched any ".process-tabs" panel, so the
+// content silently never changed. Rewritten to use each step's position
+// among its own siblings instead of its id/class string, so it works
+// regardless of what a given page's ids happen to be, and is scoped to the
+// specific .process-ul/.process-content pair being clicked (rather than
+// $('.process-tabs') globally) so multiple instances on one page wouldn't
+// interfere with each other either.
+function lxProcessGoTo($ul, $target) {
+    var $steps = $ul.children('.prc-all');
+    var index = $steps.index($target);
+    if (index < 0 || $target.hasClass('active')) return;
+    var $content = $ul.siblings('.process-content');
+    var $panels = $content.find('.process-tabs');
+    $ul.addClass('process-animate');
+    $steps.removeClass('active');
+    $target.addClass('active');
+    $panels.removeClass('active');
+    $panels.eq(index).fadeIn('slow').addClass('active');
+    $content.find('.arrow-left').toggleClass('disable', index === 0);
+    $content.find('.arrow-right').toggleClass('disable', index === $steps.length - 1);
     setTimeout(function() {
-        $('ul.process-ul').removeClass('process-animate');
+        $ul.removeClass('process-animate');
     }, 500);
+}
+
+$('ul.process-ul').on('click', '.prc-all', function() {
+    lxProcessGoTo($(this).closest('ul.process-ul'), $(this));
 });
 
-$('.arrow-left').on('click', function() {
-    if ($('#process1').hasClass("active")) {
-        $('.arrow-left').addClass('disable');
-    } else {
-        $('.arrow-left').removeClass('disable');
-        $('.arrow-right').removeClass('disable');
-        $('ul.process-ul').addClass('process-animate');
-        var abc = $('.prc-all.active').prev('.prc-all').addClass('active');
-        var tab_id1 = abc.attr('id');
-        abc.nextAll('.prc-all').removeClass('active');
-        abc.prevAll('.prc-all').removeClass('active');
-        $('.process-tabs').removeClass('active');
-        $("." + tab_id1).fadeIn('slow').addClass('active');
-        $('ul.process-ul').removeClass('process1');
-        $('ul.process-ul').removeClass('process2');
-        $('ul.process-ul').removeClass('process3');
-        $('ul.process-ul').removeClass('process4');
-        $('ul.process-ul').removeClass('process5');
-        $('ul.process-ul').removeClass('process6');
-        $('ul.process-ul').addClass(tab_id1);
-        setTimeout(function() {
-            $('ul.process-ul').removeClass('process-animate');
-        }, 500);
-    }
+$('.process-arrows').on('click', '.arrow-left', function() {
+    var $ul = $(this).closest('.process-content').siblings('ul.process-ul');
+    var $prev = $ul.children('.prc-all.active').prev('.prc-all');
+    if ($prev.length) lxProcessGoTo($ul, $prev);
 });
 
-$('.arrow-right').on('click', function() {
-    if ($('.prc-all.active').is(":last-child")) {
-        $('.arrow-right').addClass('disable');
-    } else {
-        $('.arrow-left').removeClass('disable');
-        $('.arrow-right').removeClass('disable');
-        $('ul.process-ul').addClass('process-animate');
-        var abc = $('.prc-all.active').next('.prc-all').addClass('active');
-        var tab_id1 = abc.attr('id');
-        abc.nextAll('.prc-all').removeClass('active');
-        abc.prevAll('.prc-all').removeClass('active');
-        $('.process-tabs').removeClass('active');
-        $("." + tab_id1).fadeIn('slow').addClass('active');
-        $('ul.process-ul').removeClass('process1');
-        $('ul.process-ul').removeClass('process2');
-        $('ul.process-ul').removeClass('process3');
-        $('ul.process-ul').removeClass('process4');
-        $('ul.process-ul').removeClass('process5');
-        $('ul.process-ul').removeClass('process6');
-        $('ul.process-ul').addClass(tab_id1);
-        setTimeout(function() {
-            $('ul.process-ul').removeClass('process-animate');
-        }, 500);
-    }
+$('.process-arrows').on('click', '.arrow-right', function() {
+    var $ul = $(this).closest('.process-content').siblings('ul.process-ul');
+    var $next = $ul.children('.prc-all.active').next('.prc-all');
+    if ($next.length) lxProcessGoTo($ul, $next);
 });
 
 $('.inds-toggle').on('click', function() {
